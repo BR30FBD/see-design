@@ -52,7 +52,7 @@ setmodal('block')
                     backgroundSize: "cover",
                     backgroundRepeat:"no-repeat"
                 }}>
-                    Drag&Drop images 
+                    
                 </div>
             </label>
 

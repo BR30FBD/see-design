@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./signup.css";
 import Axios from "axios";
 const Signup = () => {
   const [msg,setmsg]=useState('')
+  const [modal, setModal]=useState('')
   const url = "http://127.0.0.1:8000/signup/";
-
+const nav=useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -24,8 +25,12 @@ const Signup = () => {
         // console.log(res.data);
         if(data.password===data.confirm_password){
           setmsg(res.data.message)
-
-        }else{
+          setModal("show-modal")
+          setTimeout(()=>{
+            nav("/login")
+          },5000)
+        }
+        else{
           setmsg("confirm password is not same!")
         }
       })
@@ -48,12 +53,12 @@ const Signup = () => {
             <div className="row d-flex justify-content-end align-items-center h-100">
               <h1 className="logo">SEE DESIGN</h1>
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div className="card" style={{ borderRadius: "15px" }}>
+                <div className="card" style={{ borderRadius: "15px",background:"#383131c7" }}>
                   <div className="card-body p-5">
                     <h2 className="text-uppercase text-center mb-5">
                       Create an account
                     </h2>
-                     <p>{msg}</p>
+                    
                     <form onSubmit={(e) => submit(e)}>
                       <div className="form-outline mb-4">
                         <input
@@ -99,6 +104,7 @@ const Signup = () => {
                           onChange={(e) => handle(e)}
                           className="form-control form-control-lg"
                           placeholder="Confirm password"
+                          style={{color:"white"}}
                         />
                         {/* <label className="form-label" htmlFor="form3Example4cdg">Repeat your password</label> */}
                       </div>
@@ -116,7 +122,7 @@ const Signup = () => {
                         >
                           I agree all statements in{" "}
                           <a href="#!" className="text-body" style={{textDecoration:'none'}}>
-                            <u>Terms of service</u>
+                            <u style={{color:"white"}}>Terms of service</u>
                           </a>
                         </label>
                       </div>
@@ -145,6 +151,15 @@ const Signup = () => {
           </div>
         </div>
       </section>
+      {/*------------------------------ modal section ----------------------- */}
+      <div class={`modal ${modal}`}>
+    <div class="modal-content">
+        <span class="close-button" onClick={()=>setModal("")}>×</span>
+        <h1 style={{color:"black",fontWeight:"500",
+    fontSize:"28px"}}>{msg}</h1>
+    </div>
+</div>
+{/*----------------------------------- modal end ----------------------------- */}
       
     </>
   );

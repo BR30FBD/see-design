@@ -7,6 +7,8 @@ const Header = () => {
   const handlenav=()=>{
     document.body.classList.toggle("menu-active");
   }
+ 
+
   return (
     <>
     <nav className="navbar">
@@ -31,9 +33,9 @@ const Header = () => {
       <li className="menu-item dropdown"><NavLink to="/login" className="nav__link"  >Login</NavLink>
        
       </li>
-      <li className="menu-item "><NavLink to="/signup" className="nav__link"  >Sign In</NavLink>
+      {/* <li className="menu-item "><NavLink to="/signup" className="nav__link"  >sign in</NavLink>
        
-      </li>
+      </li> */}
       <li className="menu-item "><NavLink to="/profile" className="nav__link"  >
         <img src={profile} alt="" style={{width:"30px",height:"30px",borderRadius:"50%"}} />
       </NavLink>

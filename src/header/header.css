@@ -11,8 +11,8 @@
     display: flex;
     flex-direction: row;
     font-family: sans-serif;
-    padding: 10px 50px;
-    height: 100px;
+    padding: 0px 50px;
+    height: 80px;
 }
 .push-left {
     margin-left: auto;

@@ -1,19 +1,19 @@
 .home-container{
     width: 100vw;
     height: 100vh;
-    background-image: url('../login/backgroundimg.jpg');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNW2capsX0qpAllzCkWTl9lCaNVN6_6BA88DphMOzVeXjt5uUWYb08eDImJUpahlnixDU&usqp=CAU');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 40px;
 }
-h1{
+/* h1{
     overflow: hidden;
     color: #ffff;
-}
-h5{
-    overflow: hidden;
-}
+} */
+    /* h5{
+        overflow: hidden;
+    } */
 img{
     width: 100%;
 }
