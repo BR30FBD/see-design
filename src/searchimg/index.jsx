@@ -17,7 +17,7 @@ setmodal('block')
           if(reader.readyState ===2){
            setimg(reader.result)
            console.log(reader.result,"result")
-        nav("/dashbord",{state:{id:1,name:reader.result}})
+        nav("/dashbord",{state:{id:1,name:reader.result,txt:"your image uploaded"}})
 
           }
         }
@@ -26,13 +26,13 @@ setmodal('block')
        }
   return (
     <>
-    <div style={{width:"100vw",height:"100vh"}} className="main">
-        <h1>Search Here Similar Images</h1>
-        <div className='search-container'>
+    <div  className="main" style={{width:"100vw",height:"100vh", backgroundImage:`url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000")`,backgroundRepeat:"no-repeat",backgroundPosition:"center",backgroundPosition:"cover"}}>
+        <h2 style={{color:"black",fontSize:"66px",marginTop:"10px"}}>Search Similar Images</h2>
+        <div className='search-container' style={{marginTop:"100px"}}>
             <input type="search" placeholder='search here....' className='search-btn'/>
             {/* <input type="file" id='file'/> */}
             <label  id='bg-label' onClick={handlemodal}>
-            <i class='fas fa-camera' style={{fontSize:"35px",color:"black"}}></i>
+            <i class='fas fa-camera' style={{fontSize:"35px",color:"black",marginTop:"5px"}}></i>
             </label>
         </div>
         {/* <img src="./camera.png" alt="" /> */}

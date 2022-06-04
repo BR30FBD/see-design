@@ -25,7 +25,7 @@ const nav=useNavigate();
         // console.log(res.data);
         if(data.password===data.confirm_password){
           setmsg(res.data.message)
-          setModal("show-modal")
+          setModal("show-modal2")
           setTimeout(()=>{
             nav("/login")
           },5000)
@@ -59,7 +59,7 @@ const nav=useNavigate();
                       Create an account
                     </h2>
                     
-                    <form onSubmit={(e) => submit(e)}>
+                    <form onSubmit={(e) => submit(e)} style={{margin:"0px"}}>
                       <div className="form-outline mb-4">
                         <input
                           type="text"
@@ -139,7 +139,7 @@ const nav=useNavigate();
 
                       <p className="text-center text-muted mt-5 mb-0">
                         Have already an account?{" "}
-                        <NavLink to="/" className="fw-bold text-body" style={{textDecoration:"none"}}>
+                        <NavLink to="/login" className="fw-bold text-body" style={{textDecoration:"none"}}>
                           Login here
                         </NavLink>
                       </p>
@@ -152,9 +152,9 @@ const nav=useNavigate();
         </div>
       </section>
       {/*------------------------------ modal section ----------------------- */}
-      <div class={`modal ${modal}`}>
-    <div class="modal-content">
-        <span class="close-button" onClick={()=>setModal("")}>×</span>
+      <div class={`modal2 ${modal}`}>
+    <div class="modal-content2">
+        <span class="close-button2" onClick={()=>setModal("")}>×</span>
         <h1 style={{color:"black",fontWeight:"500",
     fontSize:"28px"}}>{msg}</h1>
     </div>

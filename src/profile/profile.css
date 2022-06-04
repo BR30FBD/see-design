@@ -33,7 +33,9 @@ h4{
 }
 
 .labels {
-    font-size: 11px
+    font-size: 11px;
+    color: #fff;
+    
 }
 
 .add-experience:hover {

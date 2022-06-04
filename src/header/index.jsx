@@ -27,15 +27,15 @@ const Header = () => {
     {/* <!--  Menu compatible with wp_nav_menu  --> */}
     <ul id="primary-menu" className="menu nav-menu">
       <li className="menu-item current-menu-item"><NavLink to="/" className="nav__link" >Home</NavLink></li>
-      <li className="menu-item dropdown"><NavLink to="/cateogry" className="nav__link"  >Dashbord</NavLink>
+      {/* <li className="menu-item dropdown"><NavLink to="/cateogry" className="nav__link"  >Dashbord</NavLink>
         
-      </li>
+      </li> */}
       <li className="menu-item dropdown"><NavLink to="/login" className="nav__link"  >Login</NavLink>
        
       </li>
-      {/* <li className="menu-item "><NavLink to="/signup" className="nav__link"  >sign in</NavLink>
+      <li className="menu-item "><NavLink to="/#" className="nav__link"  >Log out</NavLink>
        
-      </li> */}
+      </li>
       <li className="menu-item "><NavLink to="/profile" className="nav__link"  >
         <img src={profile} alt="" style={{width:"30px",height:"30px",borderRadius:"50%"}} />
       </NavLink>

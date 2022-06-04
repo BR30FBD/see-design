@@ -3,7 +3,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat; */
-    height: 100vh;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
 
@@ -15,8 +15,8 @@
 
 }
 .mini-dash{
-    width: 20vw;
-    height: 100vh;
+    width: 25vw;
+    height: 100%;
     background-color: aliceblue;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
 }
 .max-dash{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     /* background-color: blue; */
     display: flex;
     justify-content: space-around;
@@ -34,7 +34,7 @@
     width: 200px;
     height: 200px;
     border: 1px solid red;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 .img-thumbnail{
     height: 300px;
@@ -145,7 +145,8 @@
 	 position: relative;
 	 text-align: center;
 	 border: 1px solid black;
-	 border-radius: 3px;
+	 /* border-radius: 3px; */
+	 border-right: none;
 }
  .drop input[type="checkbox"] {
 	 display: none;
@@ -244,16 +245,18 @@
 	margin-right: auto;
 	justify-content: center;
 }
-.drop{
+/* .drop{
 	/* height: 60px; */
-}
+
 .search_section{
 	width: 700px;
 	height: 50px;
 	border: none;
 	color: #555;
-	/* outline: none; */
+	outline: none;
+	
 }
+
 .serach_continer{
 	width: 900px;
 	background-color:#ffff;
@@ -263,10 +266,16 @@
 	border: 1px solid black;
 }
 .find_similar1{
-	border: 1px solid black;
-    border-radius: 13px;
+	/* border: 1px solid black; */
+    /* border-radius: 13px; */
     background: #f0f8ff33;
 }
 .main-section-dashbord{
 	overflow: hidden;
+}
+#icon{
+	opacity: 0;
+}
+#icon:hover{
+	opacity: 1;
 }

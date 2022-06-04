@@ -5,6 +5,9 @@ import './login.css'
 // import fb from "./fb.png"
 import { NavLink, useNavigate } from 'react-router-dom'
 import Axios  from 'axios'
+import Googlelogin from '../googlelogin'
+// import Facebook from '../facebook'
+// import Twitter from '../twitter'
 
 const Login = () => {
   const [msg,setmsg]=useState("")
@@ -33,11 +36,11 @@ const Login = () => {
       .then((res) => {
         console.log(res.data);
         setmsg(res.data.message)
-        setModal("show-modal")
+        setModal("show-modal1")
         if(res.data.message==="Login Successful"){
           setTimeout(
             ()=>{
-              nav("/cateogry")
+              nav("/")
             },5000
           )
         }
@@ -75,17 +78,17 @@ const Login = () => {
                 <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                 <p className="text-dark-50 text-light">Please enter your login and password!</p>
                 
-  <form  onSubmit={(e)=>submitdata(e)} style={{margin:"0px"}}
+  <form  onSubmit={(e)=>submitdata(e)} style={{margin:"0px",marginBottom:"10px"}}
   
   >
                 <div className="form-outline form-white mb-2">
                   <input type="email" id="email"  value={data.email}
-                          onChange={(e) => handle(e)} className="form-control form-control-lg" name='email'  placeholder='Email' required />
+                          onChange={(e) => handle(e)}  style={{color:"black"}}  className="form-control form-control-lg" name='email'  placeholder='Email' required />
                   {/* <label className="form-label" htmlFor="typeEmailX">Email</label> */}
                 </div>
   
                 <div className="form-outline form-white  ">
-                  <input type="password" id="password"  value={data.password}
+                  <input type="password" id="password" style={{color:"black"}}  value={data.password}
                           onChange={(e) => handle(e)} className="form-control form-control-lg" name='pass' placeholder='Password'  required/>
                   {/* <label className="form-label" htmlFor="typePasswordX">Password</label> */}
                 </div>
@@ -95,7 +98,10 @@ const Login = () => {
   
                 <button className="btn btn-outline-dark btn-lg px-5 bg-dark text-white" type="submit" >Login</button>
   </form>
-                <div className="d-flex justify-content-center text-center mt-4 pt-1">
+  <Googlelogin/>
+  {/* <Facebook/> */}
+  {/* <Twitter/> */}
+                {/* <div className="d-flex justify-content-center text-center mt-4 pt-1">
                   <a href="#!" className="text-dark">
                   <i className='fab fa-facebook' style={{fontSize:"28px",color:"royalblue"}}></i>
                       </a>
@@ -106,7 +112,7 @@ const Login = () => {
                   <a href="#!" className="text-white">
                   <i className='fab fa-google' style={{fontSize:"28px",color:"red"}}></i>
                   </a>
-                </div>
+                </div> */}
   
               </div>
   
@@ -121,11 +127,12 @@ const Login = () => {
       </div>
     </div>
   </section>
-     <div class={`modal ${modal}`}>
-     <div class="modal-content">
-         <span class="close-button" onClick={()=>setModal("")}>×</span>
+     <div class={`modal1 ${modal}`} style={{display:"block"}}>
+     <div class="modal-content1">
+         <span class="close-button1" onClick={()=>setModal("")}>×</span>
          <h1 style={{color:"black",fontWeight:"500",
-     fontSize:"28px"}}>{msg}</h1>
+     fontSize:"28px"}}>{msg} 
+     </h1>
      </div>
  </div>
       </> 

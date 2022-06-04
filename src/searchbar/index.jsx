@@ -21,7 +21,7 @@ setmodal('block')
         if(reader.readyState ===2){
          setimg(reader.result)
          console.log(reader.result,"result")
-      nav("/dashbord",{state:{id:1,name:reader.result}})
+      nav("/dashbord",{state:{id:1,name:reader.result,txt:"your uploaded image"}})
 
         }
       }
@@ -48,8 +48,8 @@ setmodal('block')
   <button type="button" value="Search" onClick={handlemodal}>Search</button>
 </form>
 
-<div className='modal-container' style={{display:`${modal}`,position:"absolute",zIndex:"10000000",marginBottom:"150%",marginLeft:"-135px",marginTop:"-444px",height:"100vh"}}>
-        <div className='box'>
+<div className='modal-container' style={{display:`${modal}`,position:"fixed",zIndex:"10000000",marginBottom:"150%",marginLeft:"-135px",marginTop:"-444px",height:"100vh"}}>
+        <div className='box' style={{marginTop:"20%"}}>
             <div className='up-section'>
                 <p style={{marginRight:"20px",fontSize:"30px",color:"black"}}>Find Similar Images</p>
                 <p style={{marginRight:"20px",fontSize:"30px",cursor:"pointer",color:"black"}} onClick={()=>setmodal("none")}>x</p>

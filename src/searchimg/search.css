@@ -1,7 +1,7 @@
 .main{
     width: 100vw;
     height: 100vh;
-    background-image: url("../login/backgroundimg.jpg");
+    background-image: url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,9 +17,9 @@
     margin-bottom: auto;
     width: 600px;
     margin-top: 50px;
-    height: 40px;
+    height: 50px;
     background-color:white;
-    border-radius: 25px;
+    border-radius: 5px;
     display: flex;
 }
 .search-btn{
