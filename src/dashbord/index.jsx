@@ -123,7 +123,7 @@ const Dashboard = () => {
             <input type="file" id="file" style={{ display: "none" }} />
             <label htmlFor="file">
               <img
-                src="https://i.pinimg.com/originals/36/d9/44/36d944e4369dcf8b6ac4f722a2dd3449.png"
+                src="https://www.citypng.com/public/uploads/preview/hd-photo-camera-black-icon-png-11640439713zxgydtuajy.png"
                 alt=""
                 style={{ width: "40px", height: "40px", marginLeft: "10px" }}
               />

@@ -45,7 +45,7 @@ const Forgotpassword = () => {
     <>
     <div className='main'>
 
-    <div className="container padding-bottom-3x mb-2 mt-5">
+    <div className="container padding-bottom-3x mb-2 mt-5" style={{marginRight:"inherit",width:"auto"}}>
       <div className="row justify-content-center">
         <div className="col-lg-8 col-md-10">
           <div className="forgot">
@@ -55,15 +55,15 @@ const Forgotpassword = () => {
 
           </div>	
           
-          <form className="card mt-4" onSubmit={(e)=>handlesubmit(e)}>
-            <div className="card-body">
+          <form className="card mt-4" onSubmit={(e)=>handlesubmit(e)} style={{background:"#0000009e",color:"#ffff"}}>
+            <div className="card-body" style={{background:"transparent"}}>
               <div className="form-group">
                 <label htmlFor="email-for-pass">Enter your email address</label>
                 <input className="form-control" type="text" id="email" value={data.email} onChange={(e)=>handlemail(e)} required=""/>
 
                 {/* <input className="form-control" type="text" id="email-for-pass" required=""/> */}
 
-                <small className="form-text text-muted">Enter the email address you used during the registration. Then we'll email a link to this address.</small>
+                <small className="form-text text-white">Enter the email address you used during the registration. Then we'll email a link to this address.</small>
                 <label htmlFor="email-for-pass" style={{display:`${display}`}}>Enter six digit code sent to your Email</label>
                 <input className="form-control" type="text" id="email-for-code"   required="" style={{display:`${display}`}}/>
                 <label htmlFor="email-for-code" style={{display:`${display}`}}>Reset your password</label>
@@ -71,7 +71,7 @@ const Forgotpassword = () => {
                 
               </div>
             </div>
-            <div className="card-footer">
+            <div className="card-footer" style={{background:"transparent",color:"#ffff"}}>
               <button className="btn btn-success" type="submit" onClick={handlepass}>{text}</button>
              <NavLink to="/">
               <button className="btn btn-danger" type="submit">Back to Login</button>
