@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from '../card'
 import Searchbar from '../searchbar'
 import "./main.css"
 const Main = () => {
@@ -10,20 +11,22 @@ const Main = () => {
 <div className="container">
 		<div className="row">
 			<div className="col-lg-12">
-				<Searchbar/>
+			
 				<div id="content">
 					
 					<h1 className='h1-text'>The Little Sweet World</h1>
 					<h3>"All you need is love.</h3>
 					<h3>But a little chocolate now and then doesn't hurt"</h3>
+		<Searchbar/>
+
 					<hr/>
-					<button className="btn btn-default btn-lg" style={{background:"white"}}><a href="/#" style={{color:"black", textDecoration:"none"
-}}>Get started!</a></button>
+					
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+<Card/>
     </>
   )
 }

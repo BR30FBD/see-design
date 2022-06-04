@@ -11,7 +11,8 @@ import Dashboard from './dashbord';
 import Forgotpassword from './forgotpassword';
 import Header from './header';
 import Main from './main';
-// import Footer from './footer';
+import Footer from './footer';
+// import Googlelogin from './googlelogin';
 function App() {
   return (
    <>
@@ -26,10 +27,11 @@ function App() {
        <Route path="/dashbord" element={<Dashboard/>}/>
        <Route path="/forgot" element={<Forgotpassword/>}/>
        <Route path="/" element={<Main/>}/>
+       {/* <Googlelogin/> */}
 
 
      </Routes>
-     {/* <Footer/> */}
+     <Footer/>
    </Router>
    {/* <Signin/> */}
    </>

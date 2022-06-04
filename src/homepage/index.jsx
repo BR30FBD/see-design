@@ -10,7 +10,7 @@ const Homepage = () => {
     <>
    
     <div className='home-container'>
-    <h1 style={{textAlign:"center",marginTop:"100px"}}>CHOOSE CATEOGRY HERE </h1>
+    <h1 style={{textAlign:"center",marginTop:"100px",color:"white"}}>CHOOSE CATEOGRY HERE </h1>
     <div className="container-fluid">
   <div className="row">
     <div className="col-6 col-lg-3 mb-4">
