@@ -401,7 +401,7 @@ const Dashboard = () => {
                     {panel ? "show Panel" : "hide panel"}
                   </p>
                   <div style={{ marginRight: "30px" }}>
-                    <label for="cars" style={{ marginRight: "10px" }}>
+                    <label  style={{ marginRight: "10px" }}>
                       Sort by:
                     </label>
                     <select

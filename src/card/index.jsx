@@ -10,10 +10,11 @@ const Card = () => {
     <div>
 
 {/* <!-- Topic Cards --> */}
-    <div id="cards_landscape_wrap-2">
+    <div id="cards_landscape_wrap-2" style={{backgroundImage:`url("https://www.freewalldownload.com/winter-wallpaper/night-mood-shows-naturals-wonderful-download-photo-views.jpg")`,backgroundSize:"cover"}}>
+
         
         <div class="container">
-        <h1 style={{color:"black"}}>Curated asset collections</h1>
+        <h1 style={{color:"#fff"}}>Curated asset collections</h1>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     <a href="">

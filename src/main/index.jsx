@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <>
   
-  <div className="background">
+  <div className="background" style={{backgroundImage:`url("./assets/images/mainimg1.jpg")`,backgroundPosition:"center",backgroundSize:"cover"}}>
 
 <div className="container">
 		<div className="row">

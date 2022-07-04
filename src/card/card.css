@@ -41,6 +41,7 @@
   }
   #cards_landscape_wrap-2 .card-flyer .text-box .text-container{
     padding: 30px 18px;
+    background: #8a2be2e6 !important;
   }
   #cards_landscape_wrap-2 .card-flyer{
     background: #FFFFFF;
@@ -78,7 +79,8 @@
     text-transform: uppercase;
     font-family: 'Roboto Black', sans-serif;
     letter-spacing: 1px;
-    color: #00acc1;
+    color: #ffff !important;
+
   }
   /*------------------------------------- modal css styling ------------------------------ */
   @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");

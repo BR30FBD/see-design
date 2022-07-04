@@ -27,6 +27,7 @@ function App() {
        <Route path="/dashbord" element={<Dashboard/>}/>
        <Route path="/forgot" element={<Forgotpassword/>}/>
        <Route path="/" element={<Main/>}/>
+       
        {/* <Googlelogin/> */}
 
 

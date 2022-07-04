@@ -45,13 +45,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .box{
     width: 500px;
     height: 400px;
     background-color: #fff;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 50px;
     border-radius: 3px;
 }
 .up-section{

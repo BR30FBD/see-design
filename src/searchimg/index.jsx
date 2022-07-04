@@ -26,7 +26,7 @@ setmodal('block')
        }
   return (
     <>
-    <div  className="main" style={{width:"100vw",height:"100vh", backgroundImage:`url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000")`,backgroundRepeat:"no-repeat",backgroundPosition:"center",backgroundPosition:"cover"}}>
+    <div  className="main" style={{width:"100vw",height:"100vh", backgroundImage:`url("https://wallpaper.dog/large/5521906.jpg")`,backgroundRepeat:"no-repeat",backgroundPosition:"center",backgroundPosition:"cover"}}>
         <h2 style={{color:"black",fontSize:"66px",marginTop:"10px"}}>Search Similar Images</h2>
         <div className='search-container' style={{marginTop:"100px"}}>
             <input type="search" placeholder='search here....' className='search-btn'/>

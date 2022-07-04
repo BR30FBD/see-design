@@ -38,6 +38,7 @@ const Login = () => {
         setmsg(res.data.message)
         setModal("show-modal1")
         if(res.data.message==="Login Successful"){
+          localStorage.setItem("token",JSON.stringify(res.data.token));
           setTimeout(
             ()=>{
               nav("/")

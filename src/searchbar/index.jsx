@@ -36,9 +36,9 @@ setmodal('block')
   <div className="search_dropdown" style={{width: "16px"}} onClick={handle}>
     <span >All</span>
     <ul style={{display:`${display  ? "block":"none"}`}} >
-      <li className="selected"  onClick={handle}>All</li>
-      <li  onClick={handle}>Books</li>
-      <li  onClick={handle}>Articles</li>
+      <li className="selected"  onClick={handle}>METAL</li>
+      <li  onClick={handle}>WOODS</li>
+      <li  onClick={handle}>STONE</li>
     </ul>
   </div>
   {/* <button type="submit" value="Search" >Search</button> */}
@@ -49,7 +49,7 @@ setmodal('block')
 </form>
 
 <div className='modal-container' style={{display:`${modal}`,position:"fixed",zIndex:"10000000",marginBottom:"150%",marginLeft:"-135px",marginTop:"-444px",height:"100vh"}}>
-        <div className='box' style={{marginTop:"20%"}}>
+        <div className='box' style={{marginTop:"10%"}}>
             <div className='up-section'>
                 <p style={{marginRight:"20px",fontSize:"30px",color:"black"}}>Find Similar Images</p>
                 <p style={{marginRight:"20px",fontSize:"30px",cursor:"pointer",color:"black"}} onClick={()=>setmodal("none")}>x</p>
