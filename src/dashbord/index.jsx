@@ -7,6 +7,7 @@ import camera from "./camera.png";
 import searchicon from "./searchicon.png";
 import upload from "./upload.jpg";
 import "./dash.css";
+import Subcription from "../subcription";
 const Dashboard = () => {
   // const [imgresult,setImgresult]=useState("")
   const [data, setData] = useState("");
@@ -22,8 +23,22 @@ const Dashboard = () => {
   console.log(data.hits, "data");
   const location = useLocation();
   console.log(location, "location");
+  const [sub,setsub]=useState(true)
+  const [price,setprice]=useState(true)
+  const [disc,setdisc]=useState(true)
+  const [orient,setorient]=useState(true);
+  const [copy,setcopy]=useState(true);
+  const [people,setpeople]=useState(true);
+  const [right,setright]=useState(true);
+  const [size,setsize]=useState(true);
+  const [iso,setiso]=useState(true);
+  const [color,setcolor]=useState(true);
+  const [safe,setsafe]=useState(true);
+const [icon,seticon]=useState(true)
+
 
   function SearchImg(e) {
+
     const a = e.target.id;
     const val = document.getElementById(a).value;
     console.log(a, "dataaagcvghchgcv");
@@ -51,6 +66,7 @@ const Dashboard = () => {
   const handledisc = (e) => {
     console.log(e.target.id, "idvaluejkhj");
     const a = document.getElementById(e.target.id);
+    
     const b = a.getAttribute("src");
     console.log(b, "imgsrc");
     setImgsrc(b);
@@ -59,6 +75,7 @@ const Dashboard = () => {
 
     document.getElementById("view").scrollIntoView();
   };
+
   return (
     <>
       <div className="main-section-dashbord" style={{position:"relative"}}>
@@ -165,21 +182,7 @@ const Dashboard = () => {
         </div>
         <div className="main-dash" style={{position:"relative"}}>
           <div className="content">
-            <div
-              className="mini-dash"
-              style={{ display: `${panel ? "none" : "block"}` }}
-            >
-              <h5
-                style={{
-                  textAlign: "center",
-                  width: "100%",
-                  textTransform: "capitalize",
-                  color: "black",
-                }}
-              >
-                {location.state.txt}
-              </h5>
-      <div style={{width:"100vw",height:"100vh",background:"rgb(20 19 19 / 87%)",position:"fixed",zIndex:"999999999",top:"0px", display: `${display}`,justifyContent:"center",alignItems:"center" }}>
+          <div style={{width:"100vw",height:"100vh",background:"rgb(20 19 19 / 87%)",position:"fixed",zIndex:"999999999",top:"0px", display: `${display}`,justifyContent:"center",alignItems:"center" }}>
       <span style={{top:"50px",position:"fixed",right:"50px",fontSize:"40px",color:"#ffff",cursor:"pointer"}} onClick={()=>setDispaly("none")}>X</span>
       <div
                   class="card mb-3"
@@ -297,53 +300,75 @@ const Dashboard = () => {
                   </div>
                 </div>
       </div>
-      <div style={{width:"100vw",height:"100vh",background:"rgb(20 19 19 / 87%)",position:"fixed",zIndex:"99999999999",top:"0px", display:`${subs}`,justifyContent:"center",alignItems:"center" }}>
-<div style={{width:"600px",height:"500px",background:"#fff"}}>
-  <div style={{width:"100%",borderBottom:"1px solid"}}>
-    <span style={{float:"right",marginRight:"20px",marginTop:"10px",fontSize:"20px",cursor:"pointer"}} onClick={()=>setsubs("none")}>X</span>
-    <br/>
-    <p style={{textAlign:"center"}}>Confirm your selection</p>
+
+
+
+
+
+
+      {/* <div style={{width:"100vw",height:"100vh",background:"rgb(20 19 19 / 87%)",position:"fixed",zIndex:"999999999",top:"0px", display:"flex",justifyContent:"center",alignItems:"center" }}>
+      <span style={{top:"50px",position:"fixed",right:"50px",fontSize:"40px",color:"#ffff",cursor:"pointer"}} onClick={()=>setDispaly("none")}>X</span>
+     <div style={{width:"50vw"}}>
+<Subcription/>
+     </div>
+      </div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",position:"relative",}}>
+          <div style={{width:"40px",marginBottom:"50px"}}>
+            <img src="https://i.stack.imgur.com/kYftr.png" alt="" onClick={()=>seticon(false)}/>
+          </div>
+          <div style={{width:"40px",marginBottom:"50px"}}>
+            <img src="https://cdn-icons-png.flaticon.com/512/31/31682.png" alt="" onClick={()=>seticon(true)}/>
+          </div>
+          </div>
+            <div
+              className="mini-dash"
+              style={{ display: `${panel ? "none" : "block"}` }}
+            >
+
+   {icon ?      
+<div>
+              <h5
+                style={{
+                  textAlign: "center",
+                  width: "100%",
+                  textTransform: "capitalize",
+                  color: "black",
+                }}
+              >
+                {location.state.txt}
+              </h5>
+   
     
-  
-  </div>
-  <div style={{display:"flex",justifyContent:"space-around"}}>
-    <div style={{width:"100%",height:"400px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-      <p>Monthly Subscription|Learn more</p>
-      <div style={{width:"250px",border:"1px solid royalblue"}}>
-        <div style={{display:"flex",alignItems:"center"}}>
-        <input type="radio"/><span style={{fontSize:"12px",marginLeft:"10px"}}> <b>3 standard assets a month</b></span>
-        </div>
-        <ul>
-          <li>₹2,394.22/month</li>
-          <li>Cancel anytime</li>
-          <li>Rollover up to 36 standard assets with renewal</li>
-        </ul>
-      </div>
-    </div>
-    <div style={{width:"100%",height:"400px"}}>
-    <div style={{width:"100%",height:"400px",display:"flex",flexDirection:"column",alignItems:"center"}}>
-      <p>Annual subscription|Learn more</p>
-      <div style={{width:"250px",border:"1px solid royalblue"}}>
-        <div style={{display:"flex",alignItems:"center"}}>
-        <input type="radio"/><span style={{fontSize:"12px",marginLeft:"10px"}}> <b>10 standard assets a month</b></span>
-        </div>
-        <ul>
-          <li>Get 10 free standard assets during your 30-day free trial</li>
-          <li>Cancel risk-free before your free trial ends</li>
-          <li>₹2,394.22/month on annual plan after free trial ends</li>
-          <li>Rollover up to 120 standard assets with renewal</li>
-        </ul>
-      </div>
-    </div>
-    </div>
-  </div>
-  <div style={{width:"100%",height:"80px",background:"royalblue",display:"flex",justifyContent:"center",alignItems:"center"}}>
-    <button style={{width:"100px",height:"40px",borderRadius:"40px",border:"2px solid white",background:"royalblue",color:"white"}}>Continue</button>
-  </div>
-
-</div>
-
-</div>
               <div className="img-upload" style={{ marginLeft: "32px" }}>
                 <img
                   src={location.state.name}
@@ -351,6 +376,317 @@ const Dashboard = () => {
                   alt="..."
                 />
               </div>
+</div>:
+
+              <div style={{width:"100%",height:"600px",overflowY:"auto"}}>
+                <div style={{display:"flex",justifyContent:"space-around",alignItems:"center",borderBottom:"2px solid gray",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-filter"></i>
+                Filter
+          </div>
+          <div style={{width:"40px"}}>
+            <span>Clear</span>
+          </div>
+                </div>
+               
+               
+               
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+            <img src="https://static.thenounproject.com/png/3844729-200.png" alt="" />
+            <span>Subcategory</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{sub ? <i class="bi bi-chevron-down" onClick={()=>setsub(!sub)}></i>:<i class="bi bi-chevron-left" onClick={()=>setsub(!sub)}></i>}</span>
+          </div>
+                </div>
+                {sub &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      All</li>
+                    <li><input type="radio" style={{marginRight:"5px"}} />Photos</li>
+                    <li> <input type="radio" style={{marginRight:"5px"}} />Illustrations</li>
+                    <li><input type="radio" />vectors</li>
+                  </ul>
+                </div>
+}
+                </div>
+                
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-cart"></i>
+            <span>price</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{price ? <i class="bi bi-chevron-down" onClick={()=>setprice(!price)}></i>:<i class="bi bi-chevron-left" onClick={()=>setprice(!price)}></i>}</span>
+          </div>
+                </div>
+                {price &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      All</li>
+                    <li><input type="radio" />Standard Content</li>
+                    <li> <input type="radio" style={{marginRight:"5px"}} />Premium</li>
+                   
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-globe"></i>
+            <span>Undiscovered</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{disc ? <i class="bi bi-chevron-down" onClick={()=>setdisc(!disc)}></i>:<i class="bi bi-chevron-left" onClick={()=>setdisc(!disc)}></i>}</span>
+          </div>
+                </div>
+                {disc &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Undiscovered Content</li>
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-square"></i>
+            <span>Orientation</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{orient ? <i class="bi bi-chevron-down" onClick={()=>setorient(!orient)}></i>:<i class="bi bi-chevron-left" onClick={()=>setorient(!orient)}></i>}</span>
+          </div>
+                </div>
+                {orient &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      All</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Horizontal</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Vertical</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Square</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Panoramic</li>
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-fonts"></i>
+            <span>CopySpace</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{copy ? <i class="bi bi-chevron-down" onClick={()=>setcopy(!copy)}></i>:<i class="bi bi-chevron-left" onClick={()=>setcopy(!copy)}></i>}</span>
+          </div>
+                </div>
+                {copy &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Images with Copy Space</li>
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-people-fill"></i>
+            <span>People</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{people ? <i class="bi bi-chevron-down" onClick={()=>setpeople(!people)}></i>:<i class="bi bi-chevron-left" onClick={()=>setpeople(!people)}></i>}</span>
+          </div>
+                </div>
+                {people &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      All</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Include people</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Exclude people</li>
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+            <span>UsageRights</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{right ? <i class="bi bi-chevron-down" onClick={()=>setright(!right)}></i>:<i class="bi bi-chevron-left" onClick={()=>setright(!right)}></i>}</span>
+          </div>
+                </div>
+                {right &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      All</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Commercial Use</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Editorial Use</li>
+                  </ul>
+                </div>
+}
+                </div>
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-aspect-ratio"></i>
+            <span> Size</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{size ? <i class="bi bi-chevron-down" onClick={()=>setsize(!size)}></i>:<i class="bi bi-chevron-left" onClick={()=>setsize(!size)}></i>}</span>
+          </div>
+                </div>
+                {size &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Pixels</li>
+                      <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Megapixels</li>
+                      <li>
+
+                        <span>Minimum Width</span>
+                          <input type="number" placeholder="Type here" value="kknkj" style={{width:"80px",outline:"none",border:"none",fontSize:"20px",color:"black",borderBottom:"1px solid"}}/>
+</li>
+<li>
+
+<span>Minimum Heigh</span>
+  <input type="number" placeholder="Type here" value="kknkj" style={{width:"80px",outline:"none",border:"none",fontSize:"20px",color:"black",borderBottom:"1px solid"}}/>
+</li>
+                  </ul>
+                </div>
+}
+                </div>
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-safe"></i>
+            <span> Isolated Assets</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{iso ? <i class="bi bi-chevron-down" onClick={()=>setiso(!iso)}></i>:<i class="bi bi-chevron-left" onClick={()=>setiso(!iso)}></i>}</span>
+          </div>
+                </div>
+                {iso &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio" style={{marginRight:"5px"}} />
+                      Isolated Only</li>
+                     
+                  </ul>
+                </div>
+}
+                </div>
+
+
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-eye-fill"></i>
+            <span> Color</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{color ? <i class="bi bi-chevron-down" onClick={()=>setcolor(!color)}></i>:<i class="bi bi-chevron-left" onClick={()=>setcolor(!color)}></i>}</span>
+          </div>
+                </div>
+                {color &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <form style={{margin:"0px"}}>
+                      <input type="color" value="" /><br/>
+<button type="reset" style={{border:"none"}}>clear</button>                                            
+                      </form>
+                      </li>
+                     
+                  </ul>
+                </div>
+}
+                </div>
+                <div style={{borderBottom:"2px solid gray"}}>
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",alignItems:"center",marginTop:"20px"}}>
+                <div style={{width:"30px",display:"flex"}}>
+                <i class="bi bi-gear"></i>
+            <span> SafeSearch</span>
+          </div>
+          <div style={{width:"40px"}}>
+            <span style={{cursor:"pointer"}}>{safe ? <i class="bi bi-chevron-down" onClick={()=>setsafe(!safe)}></i>:<i class="bi bi-chevron-left" onClick={()=>setsafe(!safe)}></i>}</span>
+          </div>
+                </div>
+                {safe &&
+                <div style={{display:"flex",justifyContent:"flex-start"}}>
+                  <ul style={{listStyle:"none"}}>
+                    <li>
+                      <input type="radio"  />Enabled
+                      </li>
+                     
+                  </ul>
+                </div>
+}
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+}
             </div>
             <div className="max-dash">
               <div className="card-group">
@@ -419,7 +755,7 @@ const Dashboard = () => {
                 <div className="row row-cols-4 row-cols-md-4 g-4 mt-2 ">
                   {data &&
                     data.hits.slice(0, 20).map((data, index) => (
-                      <div className="col">
+                      <div className="col" >
                         <div
                           className="card group-img"
                           style={{ width: "100%", height: "250px" }}
@@ -431,16 +767,21 @@ const Dashboard = () => {
                               width: "100%",
                               height: "100%",
                               position: "relative",
+                              zIndex:"999"
                             }}
                             alt={data.tags}
                             id={index}
                             onClick={(e) => handledisc(e)}
                           />
-                          {/* <div id="icon" style={{width:"100%",height:"100%",background:"white",position:"absolute",display:"flex"}}>
-                  <img src={heart} alt="" style={{width:"20px",height:"20px"}}/>
+                          <div id="icon"  style={{width:"100%",height:"100%",opacity:"1",backgroundImage:`url(${data.previewURL})`,backgroundPosition:"center",backgroundRepeat:"no-repeat",backgroundSize:"cover",position:"absolute",display:"flex",justifyContent:"space-between",flexDirection:"column",alignItems:"end"}}>
+                            <div style={{width:"100px",display:"flex",zIndex:"999",justifyContent:"space-around",alignItems:"center",background:"white",height:"30px",margin:"10px",borderRadius:"6px"}}>
+                  <img src={heart} alt="" style={{width:"20px",height:"20px",zIndex:"9999",position:"absolute"}}/>
                   <img src={download} alt="" style={{width:"20px",height:"20px"}} />
                   <img src={camera} alt="" style={{width:"20px",height:"20px"}} />
-                </div> */}
+                  </div>
+                  
+                  <span style={{background:"royalblue",height:"40px",zIndex:"999",color:"#fff",display:"flex",justifyContent:"center",alignItems:"center",width:"60%",borderRadius:"12px",margin:"10px"}}>free width trial</span>
+                </div>
                         </div>
                       </div>
                     ))}

@@ -273,9 +273,9 @@
 .main-section-dashbord{
 	overflow: hidden;
 }
-#icon{
-	opacity: 0;
+/* #icon{
+	visibility: hidden;
 }
 #icon:hover{
-	opacity: 1;
-}
+	display: ;
+} */
