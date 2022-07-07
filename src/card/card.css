@@ -1,148 +1,114 @@
-/*----  Main Style  ----*/
-#cards_landscape_wrap-2{
-    text-align: center;
-    background: #F7F7F7;
-  }
-  #cards_landscape_wrap-2 .container{
-    padding-top: 80px; 
-    padding-bottom: 100px;
-  }
-  #cards_landscape_wrap-2 a{
-    text-decoration: none;
-    outline: none;
-  }
-  #cards_landscape_wrap-2 .card-flyer {
-    border-radius: 5px;
-  }
-  #cards_landscape_wrap-2 .card-flyer .image-box{
-    background: #ffffff;
+
+
+.gallery {
+    --anim-time--hi: 266ms;
+    --anim-time--med: 400ms;
+    --anim-time--lo: 600ms;
+
+    display: flex;
+    place-content: center;
+    max-width: 100%;
+    width:100%;
+    min-height: 100vh;
+    margin-inline: auto;
+    padding: clamp(0px, (30rem  - 100vw) * 9999, 1rem);
+   
+}
+
+.gallery__content--flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gallery__content--flow > *  {
+    flex-grow: 1;
+    flex-basis: calc((30rem - 100%) * 999);
+}
+
+figure {
+    display: flex;
+    min-width: 14rem;
+    max-height: 32rem;
+    position: relative;
+    border-radius: .35rem;
+    box-shadow:
+    rgb(40, 40, 40, 0.1) 0px 2px 3px,
+    rgb(20, 20, 20, 0.2) 0px 5px 8px,
+    rgb(0, 0, 0, 0.25) 0px 10px 12px;
     overflow: hidden;
-    /* box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50); */
-    border-radius: 5px;
-  }
-  #cards_landscape_wrap-2 .card-flyer .image-box img{
-    /* -webkit-transition:all .9s ease; 
-    -moz-transition:all .9s ease; 
-    -o-transition:all .9s ease;
-    -ms-transition:all .9s ease;  */
+    transition: transform var(--anim-time--med) ease;
+}
+
+figure::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        hsla(0, 0%, 0%, 0.8) 0%,
+        hsla(0, 0%, 0%, 0.7) 12%,
+        hsla(0, 0%, 0%, 0.2) 41.6%,
+        hsla(0, 0%, 0%, 0.125) 50%,
+        hsla(0, 0%, 0%, 0.01) 59.9%,
+        hsla(0, 0%, 0%, 0) 100%
+    );
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: var(--anim-time--med), var(--anim-time--med);
+    transition-timing-function: ease, ease;
+      z-index: 4;
+}
+
+.header__caption {
+    z-index: 10;
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    align-self: flex-end;
     width: 100%;
-    height: 300px;
-  }
-  #cards_landscape_wrap-2 .card-flyer:hover .image-box img{
-    opacity: 0.7;
-    -webkit-transform:scale(1.15);
-    -moz-transform:scale(1.15);
-    -ms-transform:scale(1.15);
-    -o-transform:scale(1.15);
-    transform:scale(1.15);
-  }
-  #cards_landscape_wrap-2 .card-flyer .text-box{
+    gap: 0.5rem;
+    padding: 1rem;
+    justify-content: center;
     text-align: center;
-  }
-  #cards_landscape_wrap-2 .card-flyer .text-box .text-container{
-    padding: 30px 18px;
-    background: #8a2be2e6 !important;
-  }
-  #cards_landscape_wrap-2 .card-flyer{
-    background: #FFFFFF;
-    margin-top: 50px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
-  }
-  #cards_landscape_wrap-2 .card-flyer:hover{
-    background: #fff;
-    /* box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50); */
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-    margin-top: 50px;
-  }
-  #cards_landscape_wrap-2 .card-flyer .text-box p{
-    margin-top: 10px;
-    margin-bottom: 0px;
-    padding-bottom: 0px; 
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #000000;
-  }
-  #cards_landscape_wrap-2 .card-flyer .text-box h6{
-    margin-top: 0px;
-    margin-bottom: 4px; 
-    font-size: 18px;
+    transform: translateY(100%);
+    transition: transform var(--anim-time--hi) linear,
+    opacity var(--anim-time--hi) linear;
+}
+
+figure:hover::before {
+    opacity: 0.8;
+}
+
+figure:hover .header__caption {
+    transform: translateY(0);
+    opacity: 1;
+}
+figure:hover .imgg{
+    transform: scale(1);
+}
+.title {
+    color: #fff;
+    
+}
+
+.title--primary {
+    font-size: 1.25rem;
     font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Roboto Black', sans-serif;
-    letter-spacing: 1px;
-    color: #ffff !important;
-
-  }
-  /*------------------------------------- modal css styling ------------------------------ */
-  @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
-:root {
-  --main-font: Nunito, "Trebuchet MS", sans-serif;
-  --button-bg: white;
-  --button-hover-bg: rgb(202, 202, 202);
-  --button-active-bg: rgb(149, 149, 149);
-  --content-bg: white;
 }
 
-
-
-
-/*ok actual modal now*/
-.modal {
-  visibility: hidden;
-  opacity: 0;
-  position:fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  display: block;
-  align-items: center;
-  /* justify-content: center; */
-  background: rgba(77, 77, 77, 0.7);
-  transition: all 0.4s;
+.title--secondary {
+    text-transform:uppercase;
+    font-weight: bold;
 }
 
-/*opening it*/
-.modal:target {
-  visibility: visible;
-  opacity: 1;
-  z-index: 999999999; 
-  background: #ffff;
-
-
-}
-
-/*content :D*/
-.modal-content {
-  position: relative;
-  width: 100%;
-  /* max-width: 90%; */
-  /* min-width: 20%; */
-  background: #ffff;
-  border: none;
-  padding: 1em 2em;
-  /* border: 0.3em solid black; */
-  border-radius: 1em;
-  color: black;
-}
-/*closing*/
-.close-modal {
-  position: absolute;
-  top: -0.2em;
-  right: 0.4em;
-  text-decoration: none;
-  color: black;
-  font-weight: 800;
-  font-size: 1.7em;
+.imgg {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+  transform: scale(1.15);
+    aspect-ratio: 16 / 13;
+    transition: 400ms ease-in-out;
 }

@@ -12,6 +12,9 @@ import Forgotpassword from './forgotpassword';
 import Header from './header';
 import Main from './main';
 import Footer from './footer';
+import Metal from './metal';
+import Stone from './stone';
+import Wood from './wood';
 // import Googlelogin from './googlelogin';
 function App() {
   return (
@@ -27,6 +30,11 @@ function App() {
        <Route path="/dashbord" element={<Dashboard/>}/>
        <Route path="/forgot" element={<Forgotpassword/>}/>
        <Route path="/" element={<Main/>}/>
+       <Route path="/metal" element={<Metal/>}/>
+       <Route path="/stone" element={<Stone/>}/>
+       <Route path="/wood" element={<Wood/>}/>
+
+
        
        {/* <Googlelogin/> */}
 

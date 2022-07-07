@@ -63,7 +63,7 @@
 	 background: linear-gradient(#f4f4f4, #e2e2e2);
 	 border-right: 1px solid #ddd;
 	 color: #555;
-	 padding: 0 28px 0 13px;
+	 /* padding: 0 28px 0 13px; */
 	 border-radius: 2px 0 0 2px;
 	 position: absolute;
 	 top: 0;
@@ -73,17 +73,7 @@
 	 user-select: none;
 	 box-sizing: content-box;
 }
- .search_bar .search_dropdown:after {
-	 content: "\2193";
-	 color: rgba(85, 85, 85, 0);
-	 background: url("http://media.lib.byu.edu/assets/images/searchbar/1.0/down-arrow.svg") no-repeat top left;
-	 height: 8px;
-	 width: 10px;
-	 position: absolute;
-	 top: 50%;
-	 right: 10px;
-	 margin-top: -6px;
-}
+ 
  .search_bar .search_dropdown:hover, .search_bar .search_dropdown.active {
 	 background: linear-gradient(#e7e7e7, #d5d5d5);
 	 cursor: pointer;

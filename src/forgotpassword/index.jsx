@@ -59,7 +59,7 @@ const Forgotpassword = () => {
             <div className="card-body" style={{background:"transparent"}}>
               <div className="form-group">
                 <label htmlFor="email-for-pass">Enter your email address</label>
-                <input className="form-control" type="text" id="email" value={data.email} onChange={(e)=>handlemail(e)} required=""/>
+                <input className="form-control" type="email" id="email" value={data.email} onChange={(e)=>handlemail(e)} required/>
 
                 {/* <input className="form-control" type="text" id="email-for-pass" required=""/> */}
 

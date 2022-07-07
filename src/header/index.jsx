@@ -34,6 +34,14 @@ const profiles=()=>{
 
     {/* <!--  Menu compatible with wp_nav_menu  --> */}
     <ul id="primary-menu" className="menu nav-menu">
+      <li>
+        <select name="cars"  style={{width:"100px",height:"100%",outline:"none",border:"none"}}>
+    <option value="volvo">English</option>
+    <option value="saab">Hindi</option>
+    <option value="opel">Telgu</option>
+    <option value="audi">Malyalam</option>
+  </select>
+      </li>
       <li className="menu-item current-menu-item"><NavLink to="/" className="nav__link" style={{textDecoration:"none"}} >Home</NavLink></li>
       {/* <li className="menu-item dropdown"><NavLink to="/cateogry" className="nav__link"  >Dashbord</NavLink>
         
