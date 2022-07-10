@@ -9,6 +9,7 @@ import upload from "./upload.jpg";
 import "./dash.css";
 import Subcription from "../subcription";
 import { BorderRight } from "@material-ui/icons";
+import img from "./img search.svg";
 const Dashboard = () => {
   // const [imgresult,setImgresult]=useState("")
   const [data, setData] = useState("");
@@ -262,20 +263,15 @@ LICENSE TYPE</th>
 
 
 
-      {/* <div style={{width:"100vw",height:"100vh",background:"rgb(20 19 19 / 87%)",position:"fixed",zIndex:"999999999",top:"0px", display:"flex",justifyContent:"center",alignItems:"center" }}>
-      <span style={{top:"50px",position:"fixed",right:"50px",fontSize:"40px",color:"#ffff",cursor:"pointer"}} onClick={()=>setDispaly("none")}>X</span>
-     <div style={{width:"50vw"}}>
-<Subcription/>
-     </div>
-      </div> */}
+   
 
 
             <div style={{display:"flex",flexDirection:"column",alignItems:"center",position:"relative",borderRight:"1px solid"}}>
-          <div style={{width:"30px",marginBottom:"50px"}}>
+          <div style={{width:"20px",marginBottom:"50px"}}>
             <img src="https://i.stack.imgur.com/kYftr.png" alt="" onClick={()=>seticon(false)}/>
           </div>
-          <div style={{width:"30px",marginBottom:"50px"}}>
-            <img src="https://cdn-icons-png.flaticon.com/512/31/31682.png" alt="" onClick={()=>seticon(true)}/>
+          <div style={{width:"20px",marginBottom:"50px"}}>
+            <img src={img} alt="" onClick={()=>seticon(true)}/>
           </div>
           </div>
             <div
@@ -291,7 +287,7 @@ LICENSE TYPE</th>
                   width: "100%",
                   textTransform: "capitalize",
                   color: "black",
-                  borderBottom:"1px solid"
+                  borderBottom:"1px solid",
                 }}
               >
                 {location.state.txt}

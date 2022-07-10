@@ -256,7 +256,9 @@
 	outline: none;
 	
 }
-
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
 .serach_continer{
 	width: 900px;
 	background-color:#ffff;

@@ -38,10 +38,10 @@ const Login = () => {
         setmsg(res.data.message)
         setModal("show-modal1")
         if(res.data.message==="Login Successful"){
-          localStorage.setItem("token",JSON.stringify(res.data.token));
+          localStorage.setItem("token",res.data.token.token);
           setTimeout(
             ()=>{
-              nav("/")
+              nav("/main")
             },5000
           )
         }
@@ -62,7 +62,7 @@ const Login = () => {
   }
   return (
     <>
-    <section className="vh-100 gradient-custom">
+    {/* <section className="vh-100 gradient-custom">
     <div className="container py-3 h-100">
       <div className="row d-flex justify-content-end align-items-center h-100" style={{overflow:"hidden"}}>
       <h1 className='logo'>SEE DESIGN
@@ -85,13 +85,11 @@ const Login = () => {
                 <div className="form-outline form-white mb-2">
                   <input type="email" id="email"  value={data.email}
                           onChange={(e) => handle(e)}  style={{color:"black"}}  className="form-control form-control-lg" name='email'  placeholder='Email' required />
-                  {/* <label className="form-label" htmlFor="typeEmailX">Email</label> */}
                 </div>
   
                 <div className="form-outline form-white  ">
                   <input type="password" id="password" style={{color:"black"}}  value={data.password}
                           onChange={(e) => handle(e)} className="form-control form-control-lg" name='pass' placeholder='Password'  required/>
-                  {/* <label className="form-label" htmlFor="typePasswordX">Password</label> */}
                 </div>
   
                 <p className="small mb-2 pb-lg-2"><NavLink to="/forgot" className="text-light-50" style={{color:"white", textDecoration: "none"
@@ -100,20 +98,6 @@ const Login = () => {
                 <button className="btn btn-outline-dark btn-lg px-5 bg-dark text-white" type="submit" >Login</button>
   </form>
   <Googlelogin/>
-  {/* <Facebook/> */}
-  {/* <Twitter/> */}
-                {/* <div className="d-flex justify-content-center text-center mt-4 pt-1">
-                  <a href="#!" className="text-dark">
-                  <i className='fab fa-facebook' style={{fontSize:"28px",color:"royalblue"}}></i>
-                      </a>
-                  <a href="#!" className="text-white">
-                  <i className='fab fa-twitter' style={{fontSize:"28px",color:"#00acee",marginLeft:"10px",marginRight:"10px"}}></i>
-
-                      </a>
-                  <a href="#!" className="text-white">
-                  <i className='fab fa-google' style={{fontSize:"28px",color:"red"}}></i>
-                  </a>
-                </div> */}
   
               </div>
   
@@ -127,7 +111,79 @@ const Login = () => {
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
+  
+  <section class="h-100" style={{backgroundColor: "#eee"}}>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style={{borderRadius: "25px"}}>
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class=" h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+
+                <form class="mx-1 mx-md-4" onSubmit={(e)=>submitdata(e)} style={{margin:"0px"}}>
+
+                  
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="email"  id="email"  value={data.email}
+                          onChange={(e) => handle(e)}  class="form-control" />
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="password"  id="password" style={{color:"black"}}  value={data.password}
+                          onChange={(e) => handle(e)}  class="form-control" />
+                      <label class="form-label" for="form3Example4c">Password</label>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center justify-content-center mb-4">
+                   <NavLink to='/forgot'>
+                      <label class="form-label" for="form3Example4c">Forgot Password</label>
+                    </NavLink>
+                  </div>
+                 
+
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label text-dark" for="form2Example3">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                  </div>
+                  <p className=" text-muted mt-5 mb-0" style={{color:"black"}}>
+                        Have already an account?{" "}
+                        <NavLink to="/signup" className="fw-bold " style={{textDecoration:"none"}}>
+                          Signup
+                        </NavLink>
+                      </p>
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image" />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
      <div class={`modal1 ${modal}`} style={{display:"block"}}>
      <div class="modal-content1">
          <span class="close-button1" onClick={()=>setModal("")}>×</span>

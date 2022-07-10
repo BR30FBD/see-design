@@ -1,32 +1,45 @@
 import React, { useState } from 'react'
 import "./style.css"
 import  Axios  from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 const Forgotpassword = () => {
-    const [display,setDisplay]=useState("none");
-    const [text,setText]=useState("Get New Password");
-    const url = "http://127.0.0.1:8000/login/";
+  const nav=useNavigate();
+    const url = "http://127.0.0.1:8000/forgotpassword/";
 
     const [data,setData]=useState({
       email:""
     })
-    const handlepass=(e)=>{
-        e.preventDefault();
-        if(document.getElementById("email").value.length==0){
-            alert("data not filled")
-        }else{
-            setDisplay("block");
-            setText("set password")
-        }
-    }
-    const handlesubmit=(e)=>{
+    // const handlepass=(e)=>{
+    //     e.preventDefault();
+    //     if(document.getElementById("email").value.length==0){
+    //         alert("data not filled")
+    //     }else{
+    //         setDisplay("block");
+    //         setText("set password")
+    //     }
+    // }
+    // const token=localStorage.getItem("token");
+    // const newtoken=JSON.parse(token).token;
+    const submit=(e)=>{
       e.preventDefault();
-      Axios.post(url, {
+      Axios.post(url,
+        // {
+        //   headers:{
+        //     // "Authorization":`Token ${token}`
+        //     "Authorization":"Token 9529313d9ef5e83bd76dc86992eeb52f3d22a1b3"
+        //   }, 
+        // },
+      
+        {
         email: data.email,
       
       })
         .then((res) => {
           console.log(res.data); 
+          if(res.data.message==="E-mail sent successfully Please check email"){
+            nav("/passwordset")
+          }
+
           setData(res.data);
         })
         .catch((error) => {
@@ -45,42 +58,55 @@ const Forgotpassword = () => {
     <>
     <div className='main'>
 
-    <div className="container padding-bottom-3x mb-2 mt-5" style={{marginRight:"inherit",width:"auto"}}>
-      <div className="row justify-content-center">
-        <div className="col-lg-8 col-md-10">
-          <div className="forgot">
-          	
-          	<h2>Forgot your password?</h2>
-         
+    
+    <section class="h-100 w-100" style={{backgroundColor: "#eee"}}>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style={{borderRadius: "25px"}}>
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-          </div>	
-          
-          <form className="card mt-4" onSubmit={(e)=>handlesubmit(e)} style={{background:"#0000009e",color:"#ffff"}}>
-            <div className="card-body" style={{background:"transparent"}}>
-              <div className="form-group">
-                <label htmlFor="email-for-pass">Enter your email address</label>
-                <input className="form-control" type="email" id="email" value={data.email} onChange={(e)=>handlemail(e)} required/>
+                <p class=" h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Forgot password !</p>
 
-                {/* <input className="form-control" type="text" id="email-for-pass" required=""/> */}
+                <form class="mx-1 mx-md-4"  onSubmit={(e) => submit(e)} style={{margin:"0px"}}>
 
-                <small className="form-text text-white">Enter the email address you used during the registration. Then we'll email a link to this address.</small>
-                <label htmlFor="email-for-pass" style={{display:`${display}`}}>Enter six digit code sent to your Email</label>
-                <input className="form-control" type="text" id="email-for-code"   required="" style={{display:`${display}`}}/>
-                <label htmlFor="email-for-code" style={{display:`${display}`}}>Reset your password</label>
-                <input className="form-control" type="text" id="email-for-pass" required="" style={{display:`${display}`}}/>
-                
+                 
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mt-4">
+                      <input type="email" id="email"
+                          value={data.email}
+                          onChange={(e) =>handlemail(e)} class="form-control" />
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                    </div>
+                  </div>
+
+
+                  
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Reset Password</button>
+                  </div>
+              
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image" />
+
               </div>
             </div>
-            <div className="card-footer" style={{background:"transparent",color:"#ffff"}}>
-              <button className="btn btn-success" type="submit" onClick={handlepass}>{text}</button>
-             <NavLink to="/">
-              <button className="btn btn-danger" type="submit">Back to Login</button>
-</NavLink>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 </div>
     </>
   )

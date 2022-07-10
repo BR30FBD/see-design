@@ -11,7 +11,7 @@ const Searchbar = () => {
   const nav=useNavigate();
  
   const handleimg=(e)=>{
-   
+   e.preventDefault();
       const reader=new FileReader();
       console.log(reader)
       
@@ -36,14 +36,14 @@ const Searchbar = () => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title text-dark" id="exampleModalLabel">Find Similar Images</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div className='box' style={{marginTop:"10%",width:"100%",height:"275px"}}>
+      <div className='box' style={{marginTop:"10%",width:"100%"}}>
            
             <div className='drag'>
-           <label htmlFor='file' style={{backgroundImage:`url(${img})`}} id="img-upld"          data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <label htmlFor='file' style={{backgroundImage:`url(${img})`}} id="img-upld"          >
 
                 <div className='drag-img' style={{
                     width: "100%",
@@ -56,12 +56,11 @@ const Searchbar = () => {
             </label>
 
             </div>
-            <input type="file" id="file" style={{display:"none"}} onChange={handleimg}/>
+            <input type="file" id="file" style={{display:"none"}} onChange={(e)=>handleimg(e)}/>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+       
       </div>
     </div>
   </div>
@@ -79,7 +78,7 @@ const Searchbar = () => {
 
   <input type="text" placeholder="Search for anything" style={{color:"black",marginLeft:"100px"}} />
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  
 </button>
 </form>
 

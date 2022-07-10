@@ -40,6 +40,17 @@ const Metal = () => {
     console.log(b,"moda")
     setmodalimg(b);
   }
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
        {/* free trail modal */}
@@ -90,7 +101,7 @@ const Metal = () => {
   <div class="modal-dialog" style={{maxWidth:"1200px"}}>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div style={{display:"flex",justifyContent:"end",marginRight:"10px"}}>
@@ -215,6 +226,7 @@ LICENSE TYPE</th>
           ))}
     
           </div>
+          
 
 
 

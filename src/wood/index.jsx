@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Lightbox from '../lightbox';
 import "./wood.css"
 const Wood = () => {
   const [modalimg,setmodalimg]=useState("");
@@ -40,6 +41,7 @@ const Wood = () => {
     console.log(b,"moda")
     setmodalimg(b);
   }
+  
   return (
     <div>
        {/* free trail modal */}
@@ -90,7 +92,7 @@ const Wood = () => {
   <div class="modal-dialog" style={{maxWidth:"1200px"}}>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div style={{display:"flex",justifyContent:"end",marginRight:"10px"}}>
@@ -157,8 +159,8 @@ LICENSE TYPE</th>
   </tr>
   </table>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> */}
       </div>
     </div>
   </div>
@@ -206,7 +208,7 @@ LICENSE TYPE</th>
     <i class="fas fa-download" id={index+"down"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(data)=>handledownload(data)}></i>
     <i class="fas fa-camera" id={index} onClick={(data)=>handlefilter(data)}></i>
     </div>
-    <span id="icons" data-bs-toggle="modal" href="#exampleModalToggle"  style={{display:"flex",justifyContent:"space-around",alignItems:"center",borderRadius:"3px",position:"absolute",bottom:"40px",right:"10px",width:"150px",background:"royalblue",color:"#fff",height:"30px"}}>
+    <span id="icons" data-bs-toggle="modal" href="#exampleModalToggle"  style={{display:"flex",justifyContent:"space-around",alignItems:"center",borderRadius:"3px",position:"absolute",bottom:"40px",right:"10px",width:"auto",background:"royalblue",color:"#fff",height:"30px"}}>
     <i class="bi bi-cart"></i>
       free with trial</span>
     </div>
@@ -219,7 +221,7 @@ LICENSE TYPE</th>
 
 
 
-
+<Lightbox/>
 
 
 

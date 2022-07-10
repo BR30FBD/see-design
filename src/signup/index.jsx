@@ -8,7 +8,7 @@ const Signup = () => {
   const url = "http://127.0.0.1:8000/signup/";
 const nav=useNavigate();
   const [data, setData] = useState({
-    name: "",
+    mobile: "",
     email: "",
     password: "",
     confirm_password: "",
@@ -16,19 +16,24 @@ const nav=useNavigate();
   const submit = (e) => {
     e.preventDefault();
     Axios.post(url, {
-      name: data.name,
+      mobile: data.mobile,
       email: data.email,
       password: data.password,
       confirm_password: data.confirm_password,
     })
       .then((res) => {
-        // console.log(res.data);
-        if(data.password===data.confirm_password){
+        console.log(res.data);
+        if(data.password===data.confirm_password ){
           setmsg(res.data.message)
           setModal("show-modal2")
-          setTimeout(()=>{
-            nav("/login")
-          },5000)
+          if(res.data.message!=='User Already Exist With Provided Email-ID'){
+            console.log(res.data.message);
+            
+            setTimeout(()=>{
+              nav("/login")
+            },2000)
+          }
+        
         }
         else{
           setmsg("confirm password is not same!")
@@ -47,110 +52,101 @@ const nav=useNavigate();
   }
   return (
     <>
-      <section className=" bg-image">
-        <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-          <div className="container h-100">
-            <div className="row d-flex justify-content-end align-items-center h-100">
-              <h1 className="logo">SEE DESIGN</h1>
-              <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div className="card" style={{ borderRadius: "15px",background:"#383131c7" }}>
-                  <div className="card-body p-5">
-                    <h2 className="text-uppercase text-center mb-5">
-                      Create an account
-                    </h2>
-                    
-                    <form onSubmit={(e) => submit(e)} style={{margin:"0px"}}>
-                      <div className="form-outline mb-4">
-                        <input
-                          type="text"
-                          id="name"
+    
+      <section class="h-100" style={{backgroundColor: "#eee"}}>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style={{borderRadius: "25px"}}>
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class=" h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                <form class="mx-1 mx-md-4"  onSubmit={(e) => submit(e)} style={{margin:"0px"}}>
+                
+                  {/* <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text"  id="name"
                           value={data.name}
-                          onChange={(e) => handle(e)}
-                          className="form-control form-control-lg"
-                          placeholder="Your Name"
-                        />
-                        {/* <label className="form-label" htmlFor="form3Example1cg">Your Name</label> */}
-                      </div>
+                          onChange={(e) => handle(e)} class="form-control" />
+                      <label class="form-label" for="form3Example1c">Your Name</label>
+                    </div>
+                  </div> */}
 
-                      <div className="form-outline mb-4">
-                        <input
-                          type="email"
-                          id="email"
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="email" id="email"
                           value={data.email}
-                          onChange={(e) => handle(e)}
-                          className="form-control form-control-lg"
-                          placeholder="Your Email"
-                        />
-                        {/* <label className="form-label" htmlFor="form3Example3cg">Your Email</label> */}
-                      </div>
+                          onChange={(e) => handle(e)} class="form-control" />
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-mobile fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="number" id="mobile"
+                          value={data.mobile}
+                          onChange={(e) => handle(e)} class="form-control" style={{ WebkitAppearance:"none"}}/>
+                      <label class="form-label" for="form3Example3c">Mobile Number</label>
+                    </div>
+                  </div>
 
-                      <div className="form-outline mb-4">
-                        <input
-                          type="password"
-                          id="password"
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="password"   id="password"
                           value={data.password}
-                          onChange={(e) => handle(e)}
-                          className="form-control form-control-lg"
-                          placeholder="Password"
-                        />
-                        {/* <label className="form-label" htmlFor="form3Example4cg">Password</label> */}
-                      </div>
+                          onChange={(e) => handle(e)} class="form-control" />
+                      <label class="form-label" for="form3Example4c">Password</label>
+                    </div>
+                  </div>
 
-                      <div className="form-outline mb-4">
-                        <input
-                          type="password"
-                          id="confirm_password"
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="password"  id="confirm_password"
                           value={data.confirm_password}
-                          onChange={(e) => handle(e)}
-                          className="form-control form-control-lg"
-                          placeholder="Confirm password"
-                          style={{color:"white"}}
-                        />
-                        {/* <label className="form-label" htmlFor="form3Example4cdg">Repeat your password</label> */}
-                      </div>
+                          onChange={(e) => handle(e)} class="form-control" />
+                      <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                    </div>
+                  </div>
 
-                      <div className="form-check d-flex justify-content-center mb-5">
-                        <input
-                          className="form-check-input me-2"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3cg"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="form2Example3g"
-                        >
-                          I agree all statements in{" "}
-                          <a href="#!" className="text-body" style={{textDecoration:'none'}}>
-                            <u style={{color:"white"}}>Terms of service</u>
-                          </a>
-                        </label>
-                      </div>
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                    <label class="form-check-label text-dark" for="form2Example3">
+                      I agree all statements in <a href="#!">Terms of service</a>
+                    </label>
+                  </div>
 
-                      <div className="d-flex justify-content-center">
-                        <button
-                          type="submit"
-                          className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                          style={{ color: "white" }}
-                        >
-                          Register
-                        </button>
-                      </div>
-
-                      <p className="text-center text-muted mt-5 mb-0">
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                  </div>
+                  <p className=" text-muted mt-5 mb-0" style={{color:"black"}}>
                         Have already an account?{" "}
-                        <NavLink to="/login" className="fw-bold text-body" style={{textDecoration:"none"}}>
+                        <NavLink to="/login" className="fw-bold " style={{textDecoration:"none"}}>
                           Login here
                         </NavLink>
                       </p>
-                    </form>
-                  </div>
-                </div>
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image" />
+
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
       {/*------------------------------ modal section ----------------------- */}
       <div class={`modal2 ${modal}`}>
     <div class="modal-content2">

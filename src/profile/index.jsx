@@ -1,39 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
+import { NavLink, useNavigate } from 'react-router-dom';
+// import "./header.css";
 import  Axios  from "axios";
 const Profile = () => {
-    const url = "http://127.0.0.1:8000/login/";
+  const nav=useNavigate();
+    const url = "http://127.0.0.1:8000/updateprofile/";
+const [value,setvalue]=useState({
+  username_id:"",
+  email:"",
+  mobile:"",
+  zipcode:"",
+  gst:"",
+  first_name:"",
+  last_name:""
+})
+  // const [data, setData] = useState({
+  //   name:"",
+  //   primary_email: "",
+  //   mobile:"",
+  //   country:"",
+  //   secondary_email:"",
+  //   First_language:"",
+  //   Second_language:"",
 
-  const [data, setData] = useState({
-    name:"",
-    primary_email: "",
-    mobile:"",
-    country:"",
-    secondary_email:"",
-    First_language:"",
-    Second_language:"",
-
-
+  const token=localStorage.getItem("token");
     
-  });
+  // });
  
   // const email=document.getElementById('typeEmailX')|| "";
   // const pass=document.getElementById('typePasswordX') || "";
   const submitdata=(e)=>{
-    // const {email,pass}=document.forms[0]
-    // console.log(email,"data")
-    e.preventDefault();
-    Axios.post(url, {
-        name:data.name,
-        primary_email:data.primary_email,
-        Mobile:data.mobile,
-        country:data.country,
-        secondary_email:data.secondary_email,
-        First_language:data.First_language,
-        Second_language:data.Second_language,
-    })
+    
+    // e.preventDefault();
+    fetch(url,{
+      method:"POST",
+      headers:{
+       'Content-Type': 'application/json',
+       "Authorization":`Token ${token}`
+      },
+      body:JSON.stringify({
+      //  username_id:value.username_id,
+       email:value.email,
+       mobile:value.mobile,
+       zipcode:value.zipcode,
+       gst:value.gst,
+       first_name:value.first_name,
+       last_name:value.last_name
+       })
+      })
       .then((res) => {
-        console.log(res.data);
+        console.log(res,"sucess");
         // setmsg(res.data.message)
         // setModal("show-modal1")
         // if(res.data.message==="Login Successful"){
@@ -53,11 +70,31 @@ const Profile = () => {
       });
   }
   function handle(e) {
-    const newData = { ...data };
+    const newData = { ...value };
     newData[e.target.id] = e.target.value;
-    setData(newData);
+    setvalue(newData);
     console.log(newData,"data available");
   }
+ console.log("token",token)
+  // const newtoken="51272d6ad7880abd893e910202299263a0edc678";
+  const dataget=()=>{
+    Axios.get("http://127.0.0.1:8000/getprofile/",{
+      // method:"GET",
+      headers:{
+        'Content-Type': 'application/json',
+        "Authorization":`Token ${token}`
+      }, 
+    }).then(data=>{
+      console.log(data.data.data,"getdata")
+      setvalue(data.data.data);
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
+  // console.log(value,"value");
+  useEffect(()=>{
+    dataget();
+  },[]);
   return (
     <>
       <div
@@ -69,8 +106,10 @@ const Profile = () => {
           backgroundSize: "cover",
         }}
       >
+        
           <form onSubmit={(e)=>submitdata(e)}>
-        <div className="row">
+
+<div className="row">
           <div className="col-md-3 border-right">
             <div
               className="d-flex flex-column align-items-center text-center p-3 py-5"
@@ -81,11 +120,12 @@ const Profile = () => {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span className="font-weight-bold">username</span>
-              <span className="text-white">edogaru@mail.com.my</span>
+              <span className="font-weight-bold">{value.username_id}</span>
+              <span className="text-white">{value.email}</span>
               <span> </span>
             </div>
           </div>
+          
           <div className="col-md-5 border-right">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center mb-3">
@@ -100,8 +140,9 @@ const Profile = () => {
                     type="text"
                     className="form-control"
                     placeholder="first name"
-                    id="name"
-                    value={data.name}
+                    id="username_id"
+                    disabled
+                    value={value.username_id}
                     onChange={(e)=>handle(e)}
                   />
                 </div>
@@ -111,11 +152,11 @@ const Profile = () => {
                 <div className="col-md-12">
                   <label className="labels">Primary Email ID</label>
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     placeholder="enter email id"
-                    id="primary_email"
-                    value={data.primary}
+                    id="email"
+                    value={value.email}
                     onChange={(e) => handle(e)}
                   />
                 </div>
@@ -127,7 +168,7 @@ const Profile = () => {
                     className="form-control"
                     placeholder="enter phone number"
                     id="mobile"
-                    value={data.mobile}
+                    value={value.mobile}
                     onChange={(e) => handle(e)}
                   />
                 </div>
@@ -135,56 +176,57 @@ const Profile = () => {
                 {/* <div className="col-md-12"><label className="labels">Address Line 2</label><input type="text" className="form-control" placeholder="enter address line 2" value=""/></div> */}
                 {/* <div className="col-md-12"><label className="labels">Postcode</label><input type="text" className="form-control" placeholder="enter address line 2" value=""/></div> */}
                 <div className="col-md-12">
-                  <label className="labels">Country</label>
+                  <label className="labels">ZipCode</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter Country"
+                    placeholder="Zipcode"
                     
-                    id="country"
-                    value={data.country}
+                    id="zipcode"
+                    value={value.zipcode}
                     onChange={(e) => handle(e)}
                   />
                 </div>
                 {/* <div className="col-md-12"><label className="labels">Area</label><input type="text" className="form-control" placeholder="enter address line 2" value=""/></div> */}
                 <div className="col-md-12">
-                  <label className="labels">Secondary Email ID</label>
+                  <label className="labels">GST</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="enter email id"
-                    id="secondary_email"
-                    value={data.secondary_email}
+                    placeholder="gst"
+                    id="gst"
+                    value={value.gst}
                     onChange={(e) => handle(e)}
                   />
                 </div>
               </div>
               <div className="row mt-3">
-                <div className="col-md-6">
-                  <label className="labels">First language</label>
+                <div className="col-md-12">
+                  <label className="labels"> Name</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="First language"
+                    placeholder="First Name"
                     
-                    id="First_language"
-                    value={data.First_language}
+                    id="first_name"
+                    value={value.first_name}
                     onChange={(e) => handle(e)}
                   />
                 </div>
-                <div className="col-md-6">
-                  <label className="labels">Second language</label>
+                {/* <div className="col-md-12">
+                  <label className="labels">Last Name</label>
                   <input
                     type="text"
                     className="form-control"
-                    // value=""
-                    placeholder="Second language"
-                    id="Second_language"
-                    value={data.Second_language}
+                    placeholder="Last Name"
+                    
+                    id="first_name"
+                    value={value.last_name}
                     onChange={(e) => handle(e)}
                   />
-                </div>
+                </div> */}
               </div>
+            
               <div className="mt-5 text-center">
                 <input
                   className="btn btn-primary profile-button"
@@ -195,17 +237,13 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {/* <div className="col-md-4">
-            <div className="p-3 py-5">
-                <div className="d-flex justify-content-between align-items-center experience " style={{color:"#fff"}}><span>
-                     TAX INFORMATION</span><span className="border px-3 p-1 add-experience" style={{fontSize:"10px"}}><i className="fa fa-plus"></i>&nbsp;TAX INFORMATION</span></div><br/>
-                <div className="col-md-12"><label className="labels">Experience in Designing</label><input type="text" className="form-control" placeholder="experience" value=""/></div> <br/>
-                <div className="col-md-12"><label className="labels">Additional Details</label><input type="text" className="form-control" placeholder="additional details" value=""/></div>
-            </div>
-        </div> */}
+         
         </div>
+
+        
         </form>
       </div>
+      
     </>
   );
 };

@@ -1,13 +1,13 @@
 import React from 'react'
 import Card from '../card'
-import Modal from '../modal'
+// import Modal from '../modal'
 import Searchbar from '../searchbar'
 import "./main.css"
 const Main = () => {
   return (
     <>
   
-  <div className="background" style={{backgroundImage:`url("https://as.ftcdn.net/v1/pics/home/hero-images/May22/b40de163a8d629e88ca5e3d4bc6f0c452a730c9e.homepage-hero-4.webp")`,backgroundPosition:"center",backgroundSize:"cover"}}>
+  <div className="background" style={{backgroundImage:`url("https://slp-statics.astockcdn.net/static_assets/staging/22summer/homepage/hero/hero-1.jpg?width=1555&format=webp")`,backgroundPosition:"center",backgroundSize:"cover"}}>
 
 <div className="container">
 		<div className="row">
@@ -44,7 +44,7 @@ const Main = () => {
 
   </div>
 </div>
-<Modal/>
+{/* <Modal/> */}
     </>
   )
 }

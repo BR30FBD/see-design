@@ -33,7 +33,7 @@ const Modal = () => {
 
 <div class={`popup popup-${index+1}`}>
     <NavLink to={data.link}>
-<img class="img-responsive" alt="Pop Up Gallety" src={data.imgsrc}  style={{width:"250px",height:"300px"}}/>
+<img class="img-responsive" alt="Pop Up Gallety" src={data.imgsrc}  style={{width:"250px",height:"300px",objectFit:"cover",objectPosition:"center"}}/>
 </NavLink>
 </div>
     ))}
