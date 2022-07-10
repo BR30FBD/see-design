@@ -42,7 +42,7 @@ const Login = () => {
           setTimeout(
             ()=>{
               nav("/main")
-            },5000
+            },1000
           )
         }
 
@@ -160,7 +160,7 @@ const Login = () => {
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
                   </div>
                   <p className=" text-muted mt-5 mb-0" style={{color:"black"}}>
                         Have already an account?{" "}

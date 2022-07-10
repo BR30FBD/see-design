@@ -42,9 +42,10 @@ const logout=(e)=>{
     }
   })
     .then((res) => {
+      localStorage.clear();
       console.log(res,"sccess"); 
       nav("/main")
-        localStorage.removeItem("token");
+    
       // if(res.data.message==="E-mail sent successfully Please check email"){
         
       // }
@@ -109,7 +110,7 @@ const profiles=()=>{
       {/* <li className="menu-item "><NavLink to="/#" className="nav__link" onClick={logout} style={{textDecoration:"none"}}  >Log out</NavLink>
        
       </li> */}
-      <li id='imgmenu' className="menu-item "><NavLink to="/profile" className="nav__link" onMouseOver={handlemenu} >
+      <li id='imgmenu' className="menu-item ">
         <img  src={profile} alt="" style={{width:"30px",height:"30px",borderRadius:"50%"}} />
         <ul id='menu12' style={{position:"absolute",right:"10px",fontSize:"13px",listStyle:"none",background:"#fff",paddingLeft:"0px",zIndex:"999999",border:"1px solid",borderRadius:"3px",width:"100px"}}>
           <li style={{}}>
@@ -127,7 +128,7 @@ const profiles=()=>{
             </NavLink>
             </li>
             {menu && 
-          <li style={{}}>
+          <li style={{display:"flex",justifyContent:"space-around"}}>
             
           <NavLink to='/profile' style={{textDecoration:"none",display:"flex",justifyContent:"space-around"}}>
           <i class="bi bi-person-circle"></i>
@@ -138,7 +139,7 @@ const profiles=()=>{
             </li>
 }
 {menu && 
-          <li style={{display:"flex",justifyContent:"space-around"}}>
+          <li className='mt-4' style={{display:"flex",justifyContent:"space-around"}}>
           {/* <NavLink to='/' style={{textDecoration:"none",lineHeight:"20px"}}> */}
           <i class="bi bi-box-arrow-left"></i>
            <span onClick={(e)=>logout(e)}> Logout</span>
@@ -147,7 +148,6 @@ const profiles=()=>{
 }
 
         </ul>
-      </NavLink>
        
        </li>
     </ul>
