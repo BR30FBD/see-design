@@ -15,6 +15,8 @@ const Header = () => {
   const handlemenu=()=>{
     if(localStorage.getItem('token')){
       setmenu(true)
+    }else{
+      setmenu(false)
     }
   }
   
@@ -110,7 +112,7 @@ const profiles=()=>{
       {/* <li className="menu-item "><NavLink to="/#" className="nav__link" onClick={logout} style={{textDecoration:"none"}}  >Log out</NavLink>
        
       </li> */}
-      <li id='imgmenu' className="menu-item ">
+      <li id='imgmenu' className="menu-item " onMouseOver={handlemenu}>
         <img  src={profile} alt="" style={{width:"30px",height:"30px",borderRadius:"50%"}} />
         <ul id='menu12' style={{position:"absolute",right:"10px",fontSize:"13px",listStyle:"none",background:"#fff",paddingLeft:"0px",zIndex:"999999",border:"1px solid",borderRadius:"3px",width:"100px"}}>
           <li style={{}}>
@@ -130,24 +132,25 @@ const profiles=()=>{
             {menu && 
           <li style={{display:"flex",justifyContent:"space-around"}}>
             
-          <NavLink to='/profile' style={{textDecoration:"none",display:"flex",justifyContent:"space-around"}}>
+          <NavLink to='/profile' style={{textDecoration:"none"}}>
           <i class="bi bi-person-circle"></i>
-          <span>
+          <span style={{marginLeft:"3px"}}>
             Profile
             </span>
             </NavLink>
             </li>
 }
 {menu && 
-          <li className='mt-4' style={{display:"flex",justifyContent:"space-around"}}>
+          <li className='' style={{display:"flex",justifyContent:"space-around"}}>
           {/* <NavLink to='/' style={{textDecoration:"none",lineHeight:"20px"}}> */}
           <i class="bi bi-box-arrow-left"></i>
-           <span onClick={(e)=>logout(e)}> Logout</span>
+           <span onClick={(e)=>logout(e)} style={{cursor:"pointer"}}> LOGOUT</span>
             {/* </NavLink> */}
             </li>
 }
 
         </ul>
+      {/* </NavLink> */}
        
        </li>
     </ul>
