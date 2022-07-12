@@ -183,6 +183,9 @@
 		 opacity: 0.75;
 	}
 }
+.show{
+	z-index: 5555555555 !important;
+}
  .drop .control:after {
 	 content: "";
 	 display: inline-block;

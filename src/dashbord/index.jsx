@@ -38,6 +38,7 @@ const Dashboard = () => {
   const [safe,setsafe]=useState(true);
 const [icon,seticon]=useState(true)
 const [modalimg,setmodalimg]=useState("");
+const [index,setIndex]=useState(0)
   const nav=useNavigate();
 const metal=[
   {imgsrc:"https://www.refractorymetal.org/wp-content/uploads/2019/10/Common_Metal_Materials-2.png"},
@@ -54,7 +55,7 @@ const metal=[
 
     const a = e.target.id;
     const val = document.getElementById(a).value;
-    console.log(a, "dataaagcvghchgcv");
+    // console.log(a, "dataaagcvghchgcv");
     e.preventDefault();
     setValue(val);
 
@@ -62,26 +63,57 @@ const metal=[
   }
   const handlemodal=(e)=>{
     const a=e.target.id;
-    console.log(e.target.id)
+    setIndex(e.target.id)
+    // console.log(e.target.id)
 
     const b=document.getElementById(a).getAttribute('src');
     setmodalimg(b);
+    
  
   }
+  
   const handledata=()=>{
-   const bg=metal.
-   console.log(bg)
+    if(index===0){
+      setIndex(9);
+      console.log(index,"index")
+      // alert('not found',index.value)
+
+    }else{
+      const b=index-1;
+      setIndex(b)
+     const a=metal[b];
+     console.log(a,"dataimgjhbhjbhj")
+     setmodalimg(a.imgsrc)
+     
+    }
+ 
+  }
+  const handledata1=()=>{
+    console.log(index+1,"index")
+    if(index===9){
+      setIndex(0);
+      // alert('not found',index.value)
+    }else{
+      const b=index+1;
+      setIndex(b)
+     const a=metal[b];
+     console.log(a.imgsrc,"dataimgjhbhjbhj")
+     setmodalimg(a.imgsrc)
+    }
+   
+   
+    
   }
   const handlefilter=(e)=>{
  const a=e.target.id;
  const b=document.getElementById(a).parentNode.previousSibling.getAttribute('src');
         nav("/dashbord",{state:{id:1,name:b,txt:"your uploaded image"}})
-        console.log(b,"moda")
+        // console.log(b,"moda")
   }
   const handledownload=(e)=>{
     const a=e.target.id;
     const b=document.getElementById(a).parentNode.previousSibling.getAttribute('src');
-    console.log(b,"moda")
+    // console.log(b,"moda")
     setmodalimg(b);
   }
   const dataget = () => {
@@ -101,11 +133,11 @@ const metal=[
   }, []);
 
   const handledisc = (e) => {
-    console.log(e.target.id, "idvaluejkhj");
+    // console.log(e.target.id, "idvaluejkhj");
     const a = document.getElementById(e.target.id);
     
     const b = a.getAttribute("src");
-    console.log(b, "imgsrc");
+    // console.log(b, "imgsrc");
     setImgsrc(b);
     setAltvalue(a.getAttribute("alt"));
     setDispaly("flex");
@@ -160,19 +192,20 @@ const metal=[
 
        
        {/* free trail modal end  */}
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{cursor:"pointer",width:"100vw"}}>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{cursor:"pointer",width:"100vw",zIndex:"5555555"}}>
   <div class="modal-dialog" style={{maxWidth:"1200px"}}>
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
       <div style={{display:"flex",justifyContent:"end",marginRight:"10px"}}>
       <i class="bi bi-arrow-left " style={{marginRight:"10px"}} onClick={handledata}></i>
-      <i class="bi bi-arrow-right"></i>
+      <i class="bi bi-arrow-right" onClick={handledata1}></i>
       </div>
       <div class="modal-body w-100 d-flex">
-     <img src={modalimg} alt=""  className='w-50'/>
+     <img src={modalimg} alt=""  className='w-50' id="imgdata"/>
      <div className='w-50 p-2'>
       <h4>Little girl using VR glasses at home for learning Solar system planets</h4>
       <span>By lithiumphoto</span>
@@ -691,7 +724,7 @@ LICENSE TYPE</th>
     <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
     <div id='imagicon' style={{position:"relative",cursor:"pointer"}}>
     {/* <button type="button" class="btn btn-primary"> */}
-    <img id={index+"img"}
+    <img id={index}
       src={data.imgsrc}
       
       class="w-100  shadow-1-strong rounded mb-4"

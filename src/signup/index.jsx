@@ -24,20 +24,21 @@ const nav=useNavigate();
       .then((res) => {
         console.log(res.data);
         if(data.password===data.confirm_password ){
-          setmsg(res.data.message)
-          setModal("show-modal2")
-          if(res.data.message!=='User Already Exist With Provided Email-ID'){
+        
+          if(res.data.message==='Registration Successfully'){
             console.log(res.data.message);
-            
+            setmsg(res.data.message)
+            setModal("show-modal2")
             setTimeout(()=>{
               nav("/login")
             },2000)
+          } else{
+            setmsg(res.data.message)
+            setModal("show-modal2")
           }
         
         }
-        else{
-          setmsg("confirm password is not same!")
-        }
+       
       })
       .catch((error) => {
         // console.error(error);

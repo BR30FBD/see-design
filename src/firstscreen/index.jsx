@@ -1,7 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Firstscreen = () => {
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+    
+      "google_translate_element"
+    );
+  };
+  useEffect(() => {
+   
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
   return (
     <div>
          <section class="h-100 w-100" style={{backgroundColor: "#eee",position:"fixed",top:"0px",bottom:"0px"}}>
@@ -17,11 +27,11 @@ const Firstscreen = () => {
                 <p class="  fw-medium mb-5   mt-4" style={{textAlign:"center",fontSize:"30px"}}>Select Your Language 
                 <div class="d-flex flex-row align-items-center mb-4">
                     <div class="form-outline flex-fill mb-0">
-                    <div class="form-outline flex-fill mb-0" id="google_translate_element">
-                      </div>
+                   
                     </div>
                   </div>
-                
+                  <div class="form-outline flex-fill mb-0" id="google_translate_element">
+                      </div>
                 </p>
                 <NavLink to='/main'>
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
