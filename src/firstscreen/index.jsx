@@ -8,9 +8,10 @@ const Firstscreen = () => {
       "google_translate_element"
     );
   };
+  
   useEffect(() => {
    
-    window.googleTranslateElementInit = googleTranslateElementInit;
+    window.googleTranslateElementInit =googleTranslateElementInit;
   }, []);
   return (
     <div>

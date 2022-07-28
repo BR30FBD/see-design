@@ -38,7 +38,7 @@ const Dashboard = () => {
   const [safe,setsafe]=useState(true);
 const [icon,seticon]=useState(true)
 const [modalimg,setmodalimg]=useState("");
-const [index,setIndex]=useState(0)
+const [index,setIndex]=useState(null)
   const nav=useNavigate();
 const metal=[
   {imgsrc:"https://www.refractorymetal.org/wp-content/uploads/2019/10/Common_Metal_Materials-2.png"},
@@ -64,26 +64,35 @@ const metal=[
   const handlemodal=(e)=>{
     const a=e.target.id;
     setIndex(e.target.id)
-    // console.log(e.target.id)
+    console.log(e.target.id)
 
     const b=document.getElementById(a).getAttribute('src');
     setmodalimg(b);
     
  
   }
-  
+  const a=(e)=>{
+    const aa=document.getElementById(e.target.id).src;
+
+    const path="../assets/image for seedesign/01.jpg";
+    const newpath=aa.split("/");
+    const val=newpath.pop();
+    console.log("path",val)
+  }
   const handledata=()=>{
     if(index===0){
       setIndex(9);
       console.log(index,"index")
       // alert('not found',index.value)
 
-    }else{
+    }else{  
       const b=index-1;
+      console.log(b,"index")
       setIndex(b)
      const a=metal[b];
-     console.log(a,"dataimgjhbhjbhj")
      setmodalimg(a.imgsrc)
+
+     console.log(a,"dataimgjhbhjbhj")
      
     }
  
@@ -123,9 +132,15 @@ const metal=[
       "https://pixabay.com/api/?key=12763398-42249d3dd1db2f56d3171f8c0&q=" +
         { value } +
         "&image_type=photo"
+
     )
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) =>{
+      setData(data)
+      
+      } 
+      
+      );
   };
 
   useEffect(() => {
@@ -726,7 +741,7 @@ LICENSE TYPE</th>
     {/* <button type="button" class="btn btn-primary"> */}
     <img id={index}
       src={data.imgsrc}
-      
+      onLoad={(e)=>a(e)}
       class="w-100  shadow-1-strong rounded mb-4"
       alt="Boat on Calm Water"
       onClick={(e)=>handlemodal(e)}
@@ -749,7 +764,7 @@ LICENSE TYPE</th>
           ))}
     
           </div>
-               
+               <img src={`../assets/image for seedesign/01.jpg`} alt="" srcset="" />
                 <div id="imageView"></div>
               </div>
             </div>

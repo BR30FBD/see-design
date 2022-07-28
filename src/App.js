@@ -18,6 +18,9 @@ import Wood from './wood';
 import Library from './library';
 import Passwordset from './passwordset';
 import Firstscreen from './firstscreen';
+import Customize from './customize';
+import Error from './error';
+import Edit from './edit';
 // import Googlelogin from './googlelogin';
 function App() {
   return (
@@ -35,11 +38,17 @@ function App() {
        <Route path="/passwordset" element={<Passwordset/>}/>
 
        <Route path="/main" element={<Main/>}/>
+       <Route path="*" element={<Error/>}/>
+
        <Route path="/metal" element={<Metal/>}/>
        <Route path="/stone" element={<Stone/>}/>
        <Route path="/wood" element={<Wood/>}/>
        <Route path='/library' element={<Library/>}/>
        <Route path='/' element={<Firstscreen/>}/>
+       <Route path='/customize' element={<Customize/>}/>
+       <Route path='/edit' element={<Edit/>}/>
+       
+
 
 
 

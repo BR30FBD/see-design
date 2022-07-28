@@ -164,7 +164,7 @@ const [value,setvalue]=useState({
               </div>
               <div className="row mt-2">
                 <div className="col-md-12">
-                  <label className="labels">Account Name</label>
+                  <label className="labels">Bussines Name</label>
                   <input
                     type="text"
                     className="form-control"
@@ -911,11 +911,7 @@ const [value,setvalue]=useState({
                                                   class="form-control col-6"
                                                   placeholder=" "
                                                 />
-                                                 <input
-                                                  type="text"
-                                                  class="form-control col-6"
-                                                  placeholder=" "
-                                                />
+                                               
                                                 
                                               </div>
                                               <label
