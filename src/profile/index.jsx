@@ -3,6 +3,7 @@ import "./profile.css";
 import { NavLink, useNavigate } from 'react-router-dom';
 // import "./header.css";
 import  Axios  from "axios";
+import Navbar from "../comp/navbar";
 const Profile = () => {
   const [general, setGeneral] = useState("block");
   const [order, setOrder] = useState("none");
@@ -126,6 +127,24 @@ const [value,setvalue]=useState({
   },[]);
   return (
     <>
+<Navbar/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{false &&
+<div>
       <div
         className="container rounded bg-white mt-5 mb-5"
         style={{
@@ -984,6 +1003,8 @@ const [value,setvalue]=useState({
           </div>
         </div>
       </div>
+      </div>
+}
     </>
   );
 };

@@ -19,6 +19,7 @@ import ComponenteInputRange from "./ImputRangeLinea";
 import ButtomTools from "./ButtonTools";
 import FloodFill from "q-floodfill";
 import { locateAR, moveArrow } from "./ArrowFunction";
+import Edit from "../../edit";
 
 //---------------------------------------------
 const CanvasComponent = () => {
@@ -606,6 +607,8 @@ const CanvasComponent = () => {
         clickEdit={clickEdit}
 
       />
+      <Edit  goBack={goBack}
+        goForward={goForward} />
       <ComponenteInputRange lineWidth={lineWidth} />
       <ButtomTools
         inRotation={inRotation}

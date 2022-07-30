@@ -3,6 +3,7 @@ import {fabric} from "fabric"
 import { useState } from 'react'
 import { useEffect } from 'react'
 import html2canvas from 'html2canvas'
+import 'fabric-history';
 
 const Edit = () => {
  
@@ -22,7 +23,62 @@ const Edit = () => {
    const [getdata,setgetdata]=useState([]);
    const [msg,setmsg]=useState('')
    const [mini,setmini]=useState(true)
-   const [map,setmap]=useState([])
+   const [map,setmap]=useState(0);
+   const [arre,setArr]=useState([ new fabric.Rect({
+    width:30, height:30,
+    left:10,
+    top:10,
+    fill:'',
+    
+    stroke: 'blue',
+    // fill:'',  stroke: 'blue',
+    strokeWidth: 2
+}), new fabric.Rect({
+  width:30, height:30,
+  left:10,
+  top:10,
+  fill:'',
+  
+  stroke: 'blue',
+  // fill:'',  stroke: 'blue',
+  strokeWidth: 2
+}), new fabric.Rect({
+  width:30, height:30,
+  left:10,
+  top:10,
+  fill:'',
+  
+  stroke: 'blue',
+  // fill:'',  stroke: 'blue',
+  strokeWidth: 2
+}), new fabric.Rect({
+  width:30, height:30,
+  left:10,
+  top:10,
+  fill:'',
+  
+  stroke: 'blue',
+  // fill:'',  stroke: 'blue',
+  strokeWidth: 2
+}), new fabric.Rect({
+  width:30, height:30,
+  left:10,
+  top:10,
+  fill:'',
+  
+  stroke: 'blue',
+  // fill:'',  stroke: 'blue',
+  strokeWidth: 2
+}), new fabric.Rect({
+  width:30, height:30,
+  left:10,
+  top:10,
+  fill:'',
+  
+  stroke: 'blue',
+  // fill:'',  stroke: 'blue',
+  strokeWidth: 2
+})])
   
    const aaa=value;
    document.addEventListener("DOMContentLoaded", function () {
@@ -38,7 +94,6 @@ const Edit = () => {
    resizeCanvas();
 
   });
-  
    
    // Webkit/Blink will fire this on load, but Gecko doesn't.
    
@@ -377,8 +432,11 @@ localStorage.setItem("data",target.top,target.width * target.scaleX, target.heig
   canvas.on('object:modified', objectMovedListener);
   // canvas.on('mouse:down', objectMovedListener);
 
+const arr=[rec,rec1,rec2,rec3,rec4,rec5,rec6,rec7, cir,cir1,cir2,cir3,cir4,cir5,cir6,cir7,cir8,cir9,cir10, tri, tri1, tri2, tri3, tri4, tri5, tri6, tri7, eli,eli1,eli2,eli3];
+arr.map((data)=>{
+  canvas.add(data);
 
-canvas.add(rec,rec1,rec2,rec3,rec4,rec5,rec6,rec7, cir,cir1,cir2,cir3,cir4,cir5,cir6,cir7,cir8,cir9,cir10, tri, tri1, tri2, tri3, tri4, tri5, tri6, tri7, eli,eli1,eli2,eli3);
+})
 canvas.renderAll();
 canvas.on('object:scaling', (e) => {
     var o = e.target;
@@ -446,6 +504,36 @@ const minimize=()=>{
 setmini(!mini)
 }
 
+const deleteobject=()=>{
+  var canvas = new fabric.Canvas('c');
+
+console.log(canvas.getActiveObjects())
+  
+
+}
+const undo=()=>{
+  const canvas = new fabric.Canvas('c1');
+canvas.historyInit();
+  canvas.undo();
+canvas.redo(); 
+
+}
+(()=>{
+  var canvas = new fabric.Canvas('c1');
+  const triangle=()=>{
+    setmap(map+1);
+    console.log("map",map)
+    
+    arre.slice(0,1+map).map((data)=>{
+      canvas.add(data)
+  
+    })
+  
+  }
+canvas.on("mouse:down",triangle)
+
+})();
+
 
   return (
     <div>
@@ -457,7 +545,8 @@ setmini(!mini)
       
       <p>Radius:{radius}</p>
       
-
+<p onClick={undo}>del</p>
+{/* <button onClick={triangle}>triangle</button> */}
 
 
 <div class={`offcanvas offcanvas-start ${menu}`} style={{visibility:"visible"}} data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
@@ -538,6 +627,9 @@ setmini(!mini)
       <button class="btn btn-primary " onClick={download}>
         <i class="bi bi-download"></i>
       </button>
+      <button class="btn btn-primary " onClick={deleteobject}>
+      <i class="bi bi-trash3-fill"></i>
+      </button>
 
       </div>
     
@@ -548,7 +640,10 @@ setmini(!mini)
                 
     <canvas id="c" width="1300" height="600" style={{border:"1px solid"}}></canvas>
             </div>
+
         </div>
+        <canvas id="c1" width="1300" height="600" style={{border:"1px solid"}}></canvas>
+
     </div>
   )
 }

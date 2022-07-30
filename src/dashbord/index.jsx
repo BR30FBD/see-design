@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import Searchbar from '../searchbar';
-import heart from "./heart.png";
-import download from "./download.jpg";
-import camera from "./camera.png";
-import searchicon from "./searchicon.png";
-import upload from "./upload.jpg";
 import "./dash.css";
-import Subcription from "../subcription";
-import { BorderRight } from "@material-ui/icons";
+import Axios  from "axios"
+
 import img from "./img search.svg";
 const Dashboard = () => {
-  // const [imgresult,setImgresult]=useState("")
   const [data, setData] = useState("");
   const [panel, setPanel] = useState(false);
   const [value, setValue] = useState("rose");
   const [similar, setSimilar] = useState("flex");
-  // const [img,setImg]=useState("none")
   const [altvalue, setAltvalue] = useState("");
   const [display, setDispaly] = useState("none");
   const [imgsrc, setImgsrc] = useState("");
@@ -24,6 +16,8 @@ const Dashboard = () => {
   const [subs,setsubs]=useState("none")
   console.log(data.hits, "data");
   const location = useLocation();
+const [photo,setphoto]=useState(location.state.name)
+
   console.log(location, "location");
   const [sub,setsub]=useState(true)
   const [price,setprice]=useState(true)
@@ -37,128 +31,173 @@ const Dashboard = () => {
   const [color,setcolor]=useState(true);
   const [safe,setsafe]=useState(true);
 const [icon,seticon]=useState(true)
+const [values,setvalues]=useState([])
+const [loading,setloading]=useState(true)
+const [index,setindex]=useState(null)
 const [modalimg,setmodalimg]=useState("");
-const [index,setIndex]=useState(null)
+
+const [metal,setmetal]=useState([])
   const nav=useNavigate();
-const metal=[
-  {imgsrc:"https://www.refractorymetal.org/wp-content/uploads/2019/10/Common_Metal_Materials-2.png"},
-  {imgsrc:"https://images.squarespace-cdn.com/content/v1/571079941bbee00fd7f0470f/1534799119980-PRY9DCBYV547AHYIOBSH/Iron+%284%29.JPG?format=2500w"},
-  {imgsrc:"https://qph.cf2.quoracdn.net/main-qimg-3eba01ac4f8297849fecae7c1668ab09-lq"},
-  {imgsrc:"https://s4x3n5c7.stackpathcdn.com/wp-content/uploads/2019/04/goldeffects__1.png"},
-  {imgsrc:"https://samrajpolytexltd.com/wp-content/uploads/2019/07/4S-metallic-gold-spray-paint.jpg"},
-  {imgsrc:"https://cdn.pixabay.com/photo/2019/08/19/15/13/eiffel-tower-4416700__340.jpg"},
-  {imgsrc:"https://tampasteel.com/wp-content/uploads/2018/08/metals-that-dont-rust.jpg"},
-  {imgsrc:"https://cdn.pixabay.com/photo/2016/01/14/20/55/factory-1140760__340.jpg"},
-  {imgsrc:"https://cdn.pixabay.com/photo/2016/03/23/19/38/shopping-carts-1275480__340.jpg"},
-]
+
   function SearchImg(e) {
 
     const a = e.target.id;
     const val = document.getElementById(a).value;
-    // console.log(a, "dataaagcvghchgcv");
+    console.log(a, "dataaagcvghchgcv");
     e.preventDefault();
     setValue(val);
 
-    dataget();
+  
   }
   const handlemodal=(e)=>{
     const a=e.target.id;
-    setIndex(e.target.id)
     console.log(e.target.id)
-
+setindex(Number(e.target.id))
     const b=document.getElementById(a).getAttribute('src');
     setmodalimg(b);
-    
  
-  }
-  const a=(e)=>{
-    const aa=document.getElementById(e.target.id).src;
-
-    const path="../assets/image for seedesign/01.jpg";
-    const newpath=aa.split("/");
-    const val=newpath.pop();
-    console.log("path",val)
   }
   const handledata=()=>{
-    if(index===0){
-      setIndex(9);
-      console.log(index,"index")
-      // alert('not found',index.value)
+    if(index==0){
+      const bg=index+1;
+      console.log(bg,"indexbg")
+      setindex(index+1)
+    const  a=metal[bg];
+    setmodalimg(`../assets/seedesign/${a}`)
+      
+    console.log(`../assets/seedesign/${a}`,"modalimage",modalimg,bg)
 
-    }else{  
-      const b=index-1;
-      console.log(b,"index")
-      setIndex(b)
-     const a=metal[b];
-     setmodalimg(a.imgsrc)
 
-     console.log(a,"dataimgjhbhjbhj")
-     
+    }else{
+      const bg=index-1;
+      console.log(bg,"indexbg")
+      setindex(index-1)
+      console.log(bg)
+      const  a=metal[bg];
+    setmodalimg(`../assets/seedesign/${a}`)
+    console.log(`../assets/seedesign/${a}`,"modalimage",modalimg,bg)
+
+      
     }
- 
+  
   }
   const handledata1=()=>{
-    console.log(index+1,"index")
-    if(index===9){
-      setIndex(0);
-      // alert('not found',index.value)
+    if(index ===4){
+      const bg=index-1;
+      console.log(bg,"indexbg")
+      setindex(index-1)
+    const  a=metal[bg];
+    setmodalimg(`../assets/seedesign/${a}`)
+      
+    console.log(`../assets/seedesign/${a}`,"modalimage",modalimg,bg)
+
+
     }else{
-      const b=index+1;
-      setIndex(b)
-     const a=metal[b];
-     console.log(a.imgsrc,"dataimgjhbhjbhj")
-     setmodalimg(a.imgsrc)
+      const bg=index+1;
+      console.log(bg,"indexbg")
+      setindex(index+1)
+      console.log(bg)
+      const  a=metal[bg];
+    setmodalimg(`../assets/seedesign/${a}`)
+    console.log(`../assets/seedesign/${a}`,"modalimage",modalimg,bg)
+
+      
     }
-   
-   
-    
+  
   }
   const handlefilter=(e)=>{
  const a=e.target.id;
  const b=document.getElementById(a).parentNode.previousSibling.getAttribute('src');
         nav("/dashbord",{state:{id:1,name:b,txt:"your uploaded image"}})
-        // console.log(b,"moda")
+        console.log(b,"moda")
   }
   const handledownload=(e)=>{
     const a=e.target.id;
     const b=document.getElementById(a).parentNode.previousSibling.getAttribute('src');
-    // console.log(b,"moda")
+    console.log(b,"moda")
     setmodalimg(b);
   }
-  const dataget = () => {
-    const value = 'metal';
-
-    fetch(
-      "https://pixabay.com/api/?key=12763398-42249d3dd1db2f56d3171f8c0&q=" +
-        { value } +
-        "&image_type=photo"
-
-    )
-      .then((res) => res.json())
-      .then((data) =>{
-      setData(data)
-      
-      } 
-      
-      );
-  };
-
-  useEffect(() => {
-    dataget();
-  }, []);
+ 
 
   const handledisc = (e) => {
-    // console.log(e.target.id, "idvaluejkhj");
+    console.log(e.target.id, "idvaluejkhj");
     const a = document.getElementById(e.target.id);
     
     const b = a.getAttribute("src");
-    // console.log(b, "imgsrc");
+    console.log(b, "imgsrc");
     setImgsrc(b);
     setAltvalue(a.getAttribute("alt"));
     setDispaly("flex");
 
     document.getElementById("view").scrollIntoView();
   };
+  const imgpath=location.state.localpath;
+  const newimagepath=imgpath.split("\\");
+  const lastimgpath=newimagepath.pop();
+  const submitdata=(e)=>{
+    const url="http://127.0.0.1:8000/ImageSearch/"
+    // e.preventDefault();
+    Axios.post(url,{
+      
+   "Image":lastimgpath
+      })
+      .then((res) => {
+        if(res.data.message==='Image Result Set Are'){
+          setmetal(res.data.data);
+          setloading(false)
+        }
+        console.log(res.data ,"sucess",lastimgpath);
+        
+        // setmsg(res.data.message)
+        // setModal("show-modal1")
+        // if(res.data.message==="Login Successful"){
+        //   setTimeout(
+        //     ()=>{
+        //       nav("/")
+        //     },5000
+        //   )
+        // }
+
+       
+        
+      })
+      .catch((error) => {
+        console.error(error,"errr");
+        // setmsg(error.message)
+      });
+  }
+  useEffect(()=>{
+    submitdata();
+  },[])
+  
+
+// image upload code 
+const handleimg=(e)=>{
+  e.preventDefault();
+  const imgdata=document.getElementById("file").value;
+  console.log(imgdata,"imgpath")
+
+     const reader=new FileReader();
+     
+     reader.onload=()=>{
+       if(reader.readyState ===2){
+        // setimg(reader.result)
+        e.preventDefault();
+        console.log(reader,"result")
+     nav("/dashbord",{state:{id:1,name:reader.result,txt:"your uploaded image",localpath:imgdata}})
+setphoto(reader.result)
+// setpath(imgdata)
+       }
+     }
+     reader.readAsDataURL(e.target.files[0])
+     console.log(img,"img")
+    }
+// image upload code end
+
+
+
+
+
 
   return (
     <>
@@ -207,20 +246,19 @@ const metal=[
 
        
        {/* free trail modal end  */}
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{cursor:"pointer",width:"100vw",zIndex:"5555555"}}>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{cursor:"pointer",width:"100vw"}}>
   <div class="modal-dialog" style={{maxWidth:"1200px"}}>
     <div class="modal-content">
       <div class="modal-header">
-        {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
       <div style={{display:"flex",justifyContent:"end",marginRight:"10px"}}>
       <i class="bi bi-arrow-left " style={{marginRight:"10px"}} onClick={handledata}></i>
       <i class="bi bi-arrow-right" onClick={handledata1}></i>
       </div>
       <div class="modal-body w-100 d-flex">
-     <img src={modalimg} alt=""  className='w-50' id="imgdata"/>
+     <img src={modalimg} alt=""  className='w-50'/>
      <div className='w-50 p-2'>
       <h4>Little girl using VR glasses at home for learning Solar system planets</h4>
       <span>By lithiumphoto</span>
@@ -303,6 +341,12 @@ LICENSE TYPE</th>
   </label>
 </div>
         <div className="main-dash" style={{position:"relative"}}>
+          {loading &&
+        <div style={{width:"100%",height:"100%",zIndex:"999999999999",position:"absolute",background:"#fff",display:"flex",justifyContent:"center",alignItems:"center"}}>
+          <h4>Loading.............</h4>
+        </div>
+}
+
           <div className="content">
       
 
@@ -343,11 +387,15 @@ LICENSE TYPE</th>
    
     
               <div className="img-upload" style={{ marginLeft: "32px" }}>
+              <input type="file" id="file" style={{display:"none"}} onChange={(e)=>handleimg(e)}/>
+              <label htmlFor="file" style={{height:"100%"}}>
                 <img
-                  src={location.state.name}
+                  src={photo}
                   className="img-thumbnail1"
                   alt="..."
+                  onClick={submitdata}
                 />
+                </label>
                  <ul style={{listStyle:"none",marginTop:"50px"}}>
                     <li>
                       <input type="radio" style={{marginRight:"5px"}} />
@@ -669,6 +717,7 @@ LICENSE TYPE</th>
               </div>
 }
             </div>
+
             <div className="max-dash">
               <div className="card-group">
                 <div
@@ -734,14 +783,15 @@ LICENSE TYPE</th>
                   </div>
                 </div>
                 <div className="row row-cols-4 row-cols-md-4 g-4 mt-2 ">
+           
                 <div class="row mt-4 w-100">
           {metal.map((data,index)=>(
     <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
     <div id='imagicon' style={{position:"relative",cursor:"pointer"}}>
     {/* <button type="button" class="btn btn-primary"> */}
     <img id={index}
-      src={data.imgsrc}
-      onLoad={(e)=>a(e)}
+      src={`../assets/seedesign/${data}`}
+      
       class="w-100  shadow-1-strong rounded mb-4"
       alt="Boat on Calm Water"
       onClick={(e)=>handlemodal(e)}
@@ -764,10 +814,11 @@ LICENSE TYPE</th>
           ))}
     
           </div>
-               <img src={`../assets/image for seedesign/01.jpg`} alt="" srcset="" />
+               
                 <div id="imageView"></div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
